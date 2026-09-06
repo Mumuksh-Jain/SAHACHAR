@@ -124,30 +124,30 @@ export const BootSequence: React.FC = () => {
   return (
     <div className="fixed inset-0 z-[9999] flex flex-col justify-between overflow-hidden select-none"
          style={{
-           background: 'radial-gradient(ellipse at 50% 30%, #0c1c33 0%, #07111F 70%, #03070d 100%)',
+           background: 'radial-gradient(ellipse at 50% 30%, #0c2b20 0%, #07140E 70%, #030a07 100%)',
            color: '#F8FAFC',
            fontFamily: 'Inter, system-ui, sans-serif'
          }}>
       {/* Dynamic scanline and grid overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20"
            style={{
-             backgroundImage: 'linear-gradient(rgba(34, 211, 238, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.1) 1px, transparent 1px)',
+             backgroundImage: 'linear-gradient(rgba(45, 212, 191, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 212, 191, 0.1) 1px, transparent 1px)',
              backgroundSize: '40px 40px',
            }}
       />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,17,31,0.8)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,20,14,0.85)_100%)]" />
 
       {/* TOP CLASSIFICATION BAR */}
-      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-cyan-500/20 bg-slate-950/60 backdrop-blur-md">
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-[#164E3D]/60 bg-[#0B1F16]/80 backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/50 flex items-center justify-center text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.4)]">
+          <div className="w-9 h-9 rounded-xl bg-[#0F3E2E] border border-[#2DD4BF]/50 flex items-center justify-center text-[#2DD4BF] shadow-[0_0_15px_rgba(45,212,191,0.3)]">
             <Shield size={20} />
           </div>
           <div>
-            <div className="text-xs font-mono font-bold tracking-[0.2em] text-cyan-400">
+            <div className="text-xs font-mono font-bold tracking-[0.2em] text-[#E8F3ED]">
               NATIONAL DISASTER MANAGEMENT AUTHORITY • GOVT OF ODISHA
             </div>
-            <div className="text-[11px] text-slate-400 font-mono">
+            <div className="text-[11px] text-slate-300 font-mono">
               OPERATION AMRIT DHARA // TIRTOL BASIN DISASTER MITIGATION SYSTEM
             </div>
           </div>
@@ -158,9 +158,9 @@ export const BootSequence: React.FC = () => {
             onClick={toggleSound}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold border transition-all"
             style={{
-              background: soundEnabled ? 'rgba(6, 182, 212, 0.2)' : 'rgba(15, 23, 42, 0.6)',
-              borderColor: soundEnabled ? '#06b6d4' : '#334155',
-              color: soundEnabled ? '#22d3ee' : '#94a3b8',
+              background: soundEnabled ? 'rgba(224, 90, 27, 0.2)' : 'rgba(15, 62, 46, 0.6)',
+              borderColor: soundEnabled ? '#E05A1B' : '#164E3D',
+              color: soundEnabled ? '#F97316' : '#94a3b8',
             }}
           >
             {soundEnabled ? <Volume2 size={14} /> : <VolumeX size={14} />}
@@ -169,7 +169,7 @@ export const BootSequence: React.FC = () => {
 
           <button
             onClick={handleSkip}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-mono font-bold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-600 transition-all shadow-md"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-xs font-mono font-bold text-slate-200 hover:text-white bg-[#0F3E2E]/80 hover:bg-[#134E35] border border-[#2DD4BF]/30 transition-all shadow-md cursor-pointer"
           >
             <FastForward size={14} />
             SKIP BOOT
@@ -180,31 +180,30 @@ export const BootSequence: React.FC = () => {
       {/* CENTER HOLOGRAPHIC INITIALIZATION DISPLAY */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 max-w-5xl mx-auto w-full py-4">
         
-        {/* Animated Cyber Core Icon */}
-        <div className="relative mb-6 flex items-center justify-center">
+        {/* Animated Cyber Core Icon (Enlarged) */}
+        <div className="relative mb-8 flex items-center justify-center">
           {/* Rotating Outer Radar Ring */}
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-            className="w-32 h-32 rounded-full border border-dashed border-cyan-400/40 absolute"
+            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="w-56 h-56 sm:w-64 sm:h-64 rounded-full border border-dashed border-[#E05A1B]/40 absolute"
           />
           {/* Counter-rotating Inner Ring */}
           <motion.div
             animate={{ rotate: -360 }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
-            className="w-24 h-24 rounded-full border border-cyan-500/50 absolute"
+            transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+            className="w-48 h-48 sm:w-56 sm:h-56 rounded-full border border-[#2DD4BF]/40 absolute"
           />
-          {/* Pulsing Core with Official SAHACHAR Emblem */}
+          {/* Pulsing Core with Official SAHACHAR Logo (BIG) */}
           <motion.div
-            animate={{ scale: [1, 1.05, 1], boxShadow: ['0 0 25px rgba(224,165,59,0.3)', '0 0 50px rgba(224,165,59,0.7)', '0 0 25px rgba(224,165,59,0.3)'] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-20 h-20 rounded-full border-2 border-[#E0A53B] overflow-hidden shadow-2xl z-10 bg-[#101E17] flex items-center justify-center"
+            animate={{ scale: [1, 1.04, 1], boxShadow: ['0 0 35px rgba(224,90,27,0.3)', '0 0 60px rgba(224,90,27,0.5)', '0 0 35px rgba(224,90,27,0.3)'] }}
+            transition={{ duration: 2.2, repeat: Infinity }}
+            className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-[#E05A1B] overflow-hidden shadow-2xl z-10 bg-white flex items-center justify-center p-2.5"
           >
             <img
               src="/sahachar-logo.png"
               alt="SAHACHAR Logo"
-              className="w-full h-full object-cover"
-              style={{ objectPosition: 'center 15%' }}
+              className="w-full h-full object-contain rounded-full"
             />
           </motion.div>
         </div>
@@ -214,18 +213,21 @@ export const BootSequence: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1E4B32]/60 border border-[#6A8F3A]/60 text-[#86EFAC] text-xs font-mono font-bold mb-2 tracking-widest"
+            className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0F3E2E]/80 border border-[#E05A1B]/50 text-[#E8F3ED] text-xs font-mono font-bold mb-2 tracking-widest shadow-md"
           >
-            <span className="w-2 h-2 rounded-full bg-[#E0A53B] animate-pulse" />
-            SECURE BOOT SEQUENCE v2.6.4 ACTIVE
+            <span className="w-2 h-2 rounded-full bg-[#E05A1B] animate-pulse" />
+            SMART INDIA HACKATHON 2025 • DISASTER CORE ACTIVE
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl font-serif font-black tracking-wider text-[#FAF8F5] drop-shadow-[0_0_30px_rgba(224,165,59,0.4)]">
-            SAHACHAR-DRR
+          <h1 className="text-4xl md:text-6xl font-serif font-black tracking-wider text-white drop-shadow-[0_0_35px_rgba(224,90,27,0.4)]">
+            SAHACHAR<span className="text-[#E05A1B]">-DRR</span>
           </h1>
-          <p className="text-sm md:text-base text-[#E0A53B] font-medium tracking-wide mt-1">
-            Livelihood-Aware Joint Human–Livestock Evacuation Intelligence
+          <p className="text-sm md:text-base text-slate-200 font-medium tracking-wide mt-1">
+            Rural Evacuation Assurance & Action System
           </p>
+          <div className="inline-block mt-1 px-3 py-0.5 rounded-full text-xs font-mono text-[#E05A1B] font-bold bg-[#E05A1B]/10 border border-[#E05A1B]/30">
+            From Warning to Executable Action
+          </div>
         </div>
 
         {/* SUBSYSTEM READINESS GAUGES (5 METRIC CARDS) */}
@@ -243,17 +245,17 @@ export const BootSequence: React.FC = () => {
                 key={idx}
                 className="rounded-xl p-2.5 border transition-all duration-300 flex flex-col justify-between"
                 style={{
-                  background: item.active ? 'rgba(12, 28, 51, 0.9)' : 'rgba(10, 18, 30, 0.6)',
-                  borderColor: item.active ? 'rgba(34, 211, 238, 0.4)' : 'rgba(51, 65, 85, 0.4)',
-                  boxShadow: item.active ? '0 0 15px rgba(6, 182, 212, 0.15)' : 'none',
+                  background: item.active ? 'rgba(15, 62, 46, 0.85)' : 'rgba(7, 20, 14, 0.7)',
+                  borderColor: item.active ? 'rgba(45, 212, 191, 0.5)' : 'rgba(22, 78, 61, 0.4)',
+                  boxShadow: item.active ? '0 0 15px rgba(45, 212, 191, 0.2)' : 'none',
                 }}
               >
                 <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-[10px] font-mono font-bold tracking-wider text-slate-400">{item.label}</span>
-                  <Icon size={13} className={item.active ? 'text-cyan-400' : 'text-slate-600'} />
+                  <span className="text-[10px] font-mono font-bold tracking-wider text-slate-300">{item.label}</span>
+                  <Icon size={13} className={item.active ? 'text-[#2DD4BF]' : 'text-slate-500'} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-mono font-bold ${item.active ? 'text-emerald-400' : 'text-amber-400'}`}>
+                  <span className={`text-xs font-mono font-bold ${item.active ? 'text-[#2DD4BF]' : 'text-[#E05A1B]'}`}>
                     {item.status}
                   </span>
                   <span className="text-[10px] font-mono text-slate-400">{item.val}</span>
@@ -264,18 +266,18 @@ export const BootSequence: React.FC = () => {
         </div>
 
         {/* PROGRESS BAR */}
-        <div className="w-full bg-slate-900/80 rounded-full h-3 border border-slate-700/80 p-0.5 mb-2 relative overflow-hidden shadow-inner">
+        <div className="w-full bg-[#0B1F16]/90 rounded-full h-3.5 border border-[#164E3D] p-0.5 mb-2 relative overflow-hidden shadow-inner">
           <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-400 shadow-[0_0_12px_rgba(34,211,238,0.8)]"
+            className="h-full rounded-full bg-gradient-to-r from-[#0F3E2E] via-[#2DD4BF] to-[#E05A1B] shadow-[0_0_15px_rgba(224,90,27,0.7)]"
             style={{ width: `${progress}%` }}
             transition={{ ease: 'easeOut' }}
           />
         </div>
 
         {/* PROGRESS DETAILS */}
-        <div className="w-full flex items-center justify-between text-xs font-mono text-slate-400 mb-4 px-1">
+        <div className="w-full flex items-center justify-between text-xs font-mono text-slate-300 mb-4 px-1">
           <div className="flex items-center gap-2">
-            <span className="text-cyan-400 font-bold">{Math.round(progress)}%</span>
+            <span className="text-[#E05A1B] font-bold">{Math.round(progress)}%</span>
             <span>INITIALIZING HIGH-PRECISION RUNTIME</span>
           </div>
           <div className="flex items-center gap-2">
@@ -285,29 +287,29 @@ export const BootSequence: React.FC = () => {
         </div>
 
         {/* LIVE TERMINAL LOG STREAM */}
-        <div className="w-full bg-slate-950/90 rounded-xl border border-slate-800 p-3 h-36 overflow-y-auto font-mono text-xs shadow-2xl backdrop-blur-sm">
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-800 text-[10px] text-slate-500 font-bold uppercase tracking-wider">
-            <span className="flex items-center gap-1 text-cyan-400">
+        <div className="w-full bg-[#05110B]/95 rounded-xl border border-[#164E3D] p-3 h-36 overflow-y-auto font-mono text-xs shadow-2xl backdrop-blur-sm">
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#164E3D]/50 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+            <span className="flex items-center gap-1 text-[#2DD4BF]">
               <Terminal size={11} /> KERNEL TELEMETRY LOGS
             </span>
-            <span className="animate-pulse text-emerald-400">● REALTIME SYNC</span>
+            <span className="animate-pulse text-[#E05A1B]">● REALTIME SYNC</span>
           </div>
 
           <div className="space-y-1">
             {steps.slice(0, currentStepIndex + 1).map((step, idx) => (
               <div key={idx} className="flex items-start gap-2 text-[11px] leading-tight">
-                <span className="text-slate-600 font-mono select-none">[{step.time}]</span>
+                <span className="text-slate-500 font-mono select-none">[{step.time}]</span>
                 <span className={`font-bold select-none ${
-                  step.subsystem === 'SECURITY' ? 'text-emerald-400' :
-                  step.subsystem === 'SATELLITE' ? 'text-cyan-400' :
-                  step.subsystem === 'HYDROLOGY' ? 'text-blue-400' :
-                  'text-amber-400'
+                  step.subsystem === 'SECURITY' ? 'text-[#2DD4BF]' :
+                  step.subsystem === 'SATELLITE' ? 'text-emerald-400' :
+                  step.subsystem === 'HYDROLOGY' ? 'text-teal-300' :
+                  'text-[#E05A1B]'
                 }`}>
                   {step.subsystem}:
                 </span>
                 <span className="text-slate-200 flex-1">{step.message}</span>
                 {step.status === 'DONE' && (
-                  <CheckCircle2 size={12} className="text-emerald-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 size={12} className="text-[#2DD4BF] flex-shrink-0 mt-0.5" />
                 )}
               </div>
             ))}
@@ -317,9 +319,9 @@ export const BootSequence: React.FC = () => {
       </div>
 
       {/* BOTTOM ACTION / CONFIRMATION FOOTER */}
-      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-t border-cyan-500/20 bg-slate-950/70 backdrop-blur-md">
-        <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
-          <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-t border-[#164E3D]/60 bg-[#0B1F16]/80 backdrop-blur-md">
+        <div className="flex items-center gap-3 text-xs text-slate-300 font-mono">
+          <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#2DD4BF] animate-ping" />
           <span>ALL FAILSAFE MATRIXES OPERATIONAL • AES-256 ZERO LOSS ENCRYPTED</span>
         </div>
 
@@ -330,16 +332,16 @@ export const BootSequence: React.FC = () => {
           className="flex items-center gap-2.5 px-6 py-2.5 rounded-xl font-bold font-mono text-sm tracking-wide transition-all shadow-lg cursor-pointer"
           style={{
             background: isCompleted
-              ? 'linear-gradient(135deg, #06b6d4 0%, #2563eb 100%)'
-              : 'rgba(30, 41, 59, 0.8)',
-            border: `1px solid ${isCompleted ? '#22d3ee' : '#475569'}`,
+              ? 'linear-gradient(135deg, #E05A1B 0%, #EA580C 100%)'
+              : 'rgba(15, 62, 46, 0.8)',
+            border: `1px solid ${isCompleted ? '#F97316' : '#164E3D'}`,
             color: isCompleted ? '#ffffff' : '#cbd5e1',
-            boxShadow: isCompleted ? '0 0 25px rgba(6, 182, 212, 0.6)' : 'none',
+            boxShadow: isCompleted ? '0 0 25px rgba(224, 90, 27, 0.6)' : 'none',
           }}
         >
           {isCompleted ? (
             <>
-              ENTER MISSION CONTROL <CheckCircle2 size={16} />
+              PROCEED TO SYSTEM PORTAL <CheckCircle2 size={16} />
             </>
           ) : (
             <>

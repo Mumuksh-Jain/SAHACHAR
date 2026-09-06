@@ -22,7 +22,7 @@ export type ActivePanel =
   | 'after_action'
   | 'citizen_request';
 
-export type AppView = 'mission_control' | 'driver' | 'citizen' | 'field';
+export type AppView = 'landing' | 'mission_control' | 'driver' | 'citizen' | 'field';
 export type MapBasemap = 'satellite' | 'terrain' | 'streets' | 'tactical';
 export type Language = 'en' | 'or';
 
@@ -204,7 +204,7 @@ const deepClone = <T>(obj: T): T => JSON.parse(JSON.stringify(obj));
 
 export const useDemoStore = create<DemoStore>((set, get) => ({
   // ── View & Localization ───────────────
-  appView: 'mission_control',
+  appView: 'landing',
   setAppView: (view) => set({ appView: view }),
   language: 'en',
   setLanguage: (lang) => set({ language: lang }),

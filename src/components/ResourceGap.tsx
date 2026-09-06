@@ -68,7 +68,7 @@ export const ResourceGapPanel: React.FC = () => {
             key={i}
             className={`rounded-2xl p-3 transition-all ${
               opt.recommended
-                ? 'bg-gradient-to-r from-[#0284C7]/15 to-[#121620] border border-[#0284C7]/40 shadow-md'
+                ? 'bg-gradient-to-r from-[#0F3E2E]/60 to-[#0B1F16] border border-[#2DD4BF]/50 shadow-md'
                 : 'crisis-card'
             }`}
           >
@@ -76,9 +76,9 @@ export const ResourceGapPanel: React.FC = () => {
               <div
                 className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold flex-shrink-0 mt-0.5"
                 style={{
-                  background: opt.recommended ? 'rgba(2, 132, 199, 0.25)' : 'rgba(255, 255, 255, 0.05)',
-                  border: `1px solid ${opt.recommended ? '#0284C7' : 'rgba(220, 195, 165, 0.2)'}`,
-                  color: opt.recommended ? '#38BDF8' : '#94a3b8',
+                  background: opt.recommended ? 'rgba(45, 212, 191, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                  border: `1px solid ${opt.recommended ? '#2DD4BF' : 'rgba(45, 212, 191, 0.15)'}`,
+                  color: opt.recommended ? '#2DD4BF' : '#94a3b8',
                 }}
               >
                 {String.fromCharCode(65 + i)}
@@ -86,7 +86,7 @@ export const ResourceGapPanel: React.FC = () => {
               <div className="flex-1">
                 <div className="text-xs text-[#FAF8F5] font-medium">{opt.label}</div>
                 {opt.recommended && (
-                  <div className="text-[10px] font-mono font-bold text-[#38BDF8] mt-1 flex items-center gap-1">
+                  <div className="text-[10px] font-mono font-bold text-[#2DD4BF] mt-1 flex items-center gap-1">
                     ★ RECOMMENDED BY SAHACHAR: Zero family displacement, compliant with 13:05 Bridge Deadline
                   </div>
                 )}
@@ -103,8 +103,9 @@ export const ResourceGapPanel: React.FC = () => {
         onClick={() => createEscalation()}
         className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-xs font-mono font-black uppercase tracking-wider text-[#FAF8F5] shadow-xl transition-all"
         style={{
-          background: 'linear-gradient(135deg, #7C3AED, #4C1D95)',
-          border: '1px solid rgba(196, 181, 253, 0.4)',
+          background: 'linear-gradient(135deg, #E05A1B, #EA580C)',
+          border: '1px solid #F97316',
+          boxShadow: '0 4px 20px rgba(224, 90, 27, 0.4)',
         }}
       >
         <Zap size={14} className="text-yellow-300" /> REQUISITION DISTRICT RESERVE CARRIER (T11)
@@ -170,9 +171,9 @@ export const EscalationPanel: React.FC = () => {
                 <div
                   className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5"
                   style={{
-                    background: isDone ? '#16A34A' : isActive ? '#7C3AED' : '#1A202C',
-                    border: `1.5px solid ${isDone ? '#4ADE80' : isActive ? '#C4B5FD' : '#334155'}`,
-                    boxShadow: isActive ? '0 0 10px rgba(124, 58, 237, 0.6)' : 'none',
+                    background: isDone ? '#0F3E2E' : isActive ? '#E05A1B' : '#0B1F16',
+                    border: `1.5px solid ${isDone ? '#2DD4BF' : isActive ? '#F97316' : '#164E3D'}`,
+                    boxShadow: isActive ? '0 0 10px rgba(224, 90, 27, 0.6)' : 'none',
                   }}
                 >
                   {isDone ? (
@@ -187,7 +188,7 @@ export const EscalationPanel: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <span
                       className="text-xs font-mono font-bold"
-                      style={{ color: isDone ? '#4ADE80' : isActive ? '#E9D5FF' : '#64748b' }}
+                      style={{ color: isDone ? '#38BDF8' : isActive ? '#E9D5FF' : '#64748b' }}
                     >
                       {step.status.replace('_', ' ')}
                     </span>
@@ -212,13 +213,13 @@ export const EscalationPanel: React.FC = () => {
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-xl">🚛</span>
               <div>
-                <div className="font-mono font-black text-xs text-[#4ADE80]">CARRIER T11 — SANCTIONED</div>
-                <div className="text-[10px] text-[#E2D9CE]/70 font-sans">
+                <div className="font-mono font-black text-xs text-[#2DD4BF]">CARRIER T11 — SANCTIONED</div>
+                <div className="text-[10px] text-[#E8F3ED]/70 font-sans">
                   Driver: M. Jena • Hydraulic Ramp Deck: 8.4 m² • Max Load: 6.0 t
                 </div>
               </div>
             </div>
-            <div className="text-[11px] text-[#86EFAC] font-mono mt-1 pt-1 border-t border-emerald-500/20">
+            <div className="text-[11px] text-[#2DD4BF] font-mono mt-1 pt-1 border-t border-[#2DD4BF]/20">
               ✓ Telemetry beacon linked to Central Map • Paired with Bus B04
             </div>
           </motion.div>
@@ -241,11 +242,12 @@ export const EscalationPanel: React.FC = () => {
           style={{
             background:
               escalation.status === 'APPROVED'
-                ? 'linear-gradient(135deg, #16A34A, #15803D)'
-                : 'linear-gradient(135deg, #7C3AED, #6D28D9)',
+                ? 'linear-gradient(135deg, #E05A1B, #EA580C)'
+                : 'linear-gradient(135deg, #0F3E2E, #134E35)',
             border: `1px solid ${
-              escalation.status === 'APPROVED' ? 'rgba(74, 222, 128, 0.4)' : 'rgba(196, 181, 253, 0.4)'
+              escalation.status === 'APPROVED' ? '#F97316' : '#2DD4BF'
             }`,
+            boxShadow: escalation.status === 'APPROVED' ? '0 4px 20px rgba(224, 90, 27, 0.45)' : 'none',
           }}
         >
           {escalation.status === 'APPROVED' ? '🚛 DEPLOY T11 TO TARAPUR CORRIDOR' : 'ADVANCE SANCTION PROTOCOL →'}
@@ -317,7 +319,7 @@ export const FieldTasksPanel: React.FC = () => {
                 animate={{ opacity: 1 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => handleVerify(check.id)}
-                className="w-full py-2 rounded-xl text-[11px] font-mono font-bold text-[#38BDF8] bg-[#0284C7]/15 border border-[#0284C7]/30 hover:bg-[#0284C7]/25 transition-all flex items-center justify-center gap-1.5"
+                className="w-full py-2 rounded-xl text-[11px] font-mono font-bold text-[#2DD4BF] bg-[#0F3E2E] border border-[#2DD4BF]/40 hover:bg-[#164E3D] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <Radio size={12} /> REQUEST FIELD AUDIT VIA ASHA / PANCHAYAT →
               </motion.button>
@@ -338,7 +340,7 @@ export const FieldTasksPanel: React.FC = () => {
                 key="verified"
                 initial={{ opacity: 0, y: -2 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-[11px] text-[#4ADE80] font-mono font-bold flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30"
+                className="text-[11px] text-[#38BDF8] font-mono font-bold flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-blue-950/40 border border-blue-500/30"
               >
                 <CheckCircle2 size={13} /> CONFIRMED BY GROUND TEAM ✓
               </motion.div>
@@ -373,9 +375,9 @@ export const AfterActionPanel: React.FC = () => {
       {/* Triumph Banner */}
       <div className="crisis-card-sanctuary rounded-2xl p-4 shadow-xl">
         <div className="flex items-center gap-2 mb-2">
-          <Shield size={20} className="text-[#16A34A]" />
+          <Shield size={20} className="text-[#38BDF8]" />
           <div>
-            <div className="font-mono font-black text-sm text-[#4ADE80]">ALL LIVES & LIVELIHOODS SECURED</div>
+            <div className="font-mono font-black text-sm text-[#38BDF8]">ALL LIVES & LIVELIHOODS SECURED</div>
             <div className="text-[10px] text-[#E2D9CE]/70">ODSMA Incident Command #712 • Tirtol Block</div>
           </div>
         </div>
@@ -391,7 +393,7 @@ export const AfterActionPanel: React.FC = () => {
           ].map(item => (
             <div key={item.label} className="rounded-xl p-2 bg-[#0A0D14]/80 border border-white/5">
               <div className="text-[9px] text-[#E2D9CE]/50 font-mono">{item.label}</div>
-              <div className="text-xs font-mono font-bold text-[#4ADE80] mt-0.5">{item.value}</div>
+              <div className="text-xs font-mono font-bold text-[#38BDF8] mt-0.5">{item.value}</div>
             </div>
           ))}
         </div>
@@ -413,7 +415,7 @@ export const AfterActionPanel: React.FC = () => {
               {'plannedBridge' in m && (
                 <div className="flex justify-between items-center text-[11px] text-[#E2D9CE]/70 py-1 border-t border-white/5">
                   <span>Bridge: {(m as any).plannedBridge} → {(m as any).actualBridge}</span>
-                  <span className="font-mono text-[#4ADE80]">{(m as any).bridgeDiff} (Within Buffer)</span>
+                  <span className="font-mono text-[#38BDF8]">{(m as any).bridgeDiff} (Within Buffer)</span>
                 </div>
               )}
               <div className="flex justify-between items-center text-[11px] text-[#E2D9CE]/70 py-1 border-t border-white/5">

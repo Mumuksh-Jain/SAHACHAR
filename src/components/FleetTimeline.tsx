@@ -73,29 +73,29 @@ export const FleetTimeline: React.FC = () => {
   const cutoffPercent = ((PAIKA_CUTOFF - TIMELINE_START) / TIMELINE_SPAN) * 100;
 
   return (
-    <div className="h-full flex flex-col px-3 py-2 overflow-hidden bg-[#0A0D14]/90 select-none">
+    <div className="h-full flex flex-col px-3 py-2 overflow-hidden bg-[#07140E]/95 select-none">
       {/* Timeline Header with Legend */}
       <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/5">
         <div className="flex items-center gap-2">
-          <Clock size={12} className="text-[#D4AF37]" />
+          <Clock size={12} className="text-[#E05A1B]" />
           <span className="text-[10px] font-mono font-bold tracking-widest text-[#FAF8F5] uppercase">
             SYNCHRONIZED EVACUATION TIMELINE
           </span>
-          <span className="text-[9px] text-[#E2D9CE]/50 font-sans hidden sm:inline">
+          <span className="text-[9px] text-[#E8F3ED]/50 font-sans hidden sm:inline">
             (Paika River Rising • Bridge Submergence Horizon: 13:05)
           </span>
         </div>
 
         {/* Legend */}
         <div className="flex items-center gap-3 text-[9px] font-mono">
-          <span className="flex items-center gap-1 text-[#38BDF8]">
-            <span className="w-2 h-2 rounded bg-[#0284C7]" /> HUMAN
+          <span className="flex items-center gap-1 text-[#2DD4BF]">
+            <span className="w-2 h-2 rounded bg-[#0F3E2E] border border-[#2DD4BF]" /> HUMAN
           </span>
           <span className="flex items-center gap-1 text-[#FBBF24]">
             <span className="w-2 h-2 rounded bg-[#D97706]" /> LIVESTOCK
           </span>
-          <span className="flex items-center gap-1 text-[#4ADE80]">
-            <span className="w-2 h-2 rounded bg-[#16A34A]" /> SANCTUARY REACHED
+          <span className="flex items-center gap-1 text-[#2DD4BF]">
+            <span className="w-2 h-2 rounded bg-[#2DD4BF]" /> SANCTUARY REACHED
           </span>
           <span className="flex items-center gap-1 text-[#F87171]">
             <span className="w-2 h-0.5 bg-[#DC2626]" /> 13:05 CUTOFF
@@ -196,7 +196,7 @@ export const FleetTimeline: React.FC = () => {
                 {/* Timeline bar track */}
                 <div
                   className="flex-1 relative h-5 rounded-lg border border-white/5 overflow-hidden"
-                  style={{ background: 'rgba(18, 22, 32, 0.7)' }}
+                  style={{ background: 'rgba(11, 31, 22, 0.7)' }}
                 >
                   {bars.map(b => {
                     const left = Math.max(0, timeToPercent(b.start));
@@ -209,20 +209,20 @@ export const FleetTimeline: React.FC = () => {
                     const isActive = mObj && !['COMPLETED', 'PLANNED', 'BLOCKED'].includes(mObj.status);
                     const isBlocked = mObj?.status === 'BLOCKED' || (b.vehicleId === 'T09' && demoStage === 'DISRUPTION');
 
-                    let bgGradient = 'linear-gradient(90deg, #0284C7, #0284C7dd)';
-                    let borderCol = '#0284C7';
+                    let bgGradient = 'linear-gradient(90deg, #0F3E2E, #134E35)';
+                    let borderCol = '#2DD4BF';
 
                     if (b.type === 'LIVESTOCK') {
-                      bgGradient = 'linear-gradient(90deg, #D97706, #D97706dd)';
-                      borderCol = '#D97706';
+                      bgGradient = 'linear-gradient(90deg, #D97706, #B45309)';
+                      borderCol = '#F59E0B';
                     } else if (b.type === 'MEDICAL') {
-                      bgGradient = 'linear-gradient(90deg, #E04838, #E04838dd)';
-                      borderCol = '#E04838';
+                      bgGradient = 'linear-gradient(90deg, #E05A1B, #EA580C)';
+                      borderCol = '#F97316';
                     }
 
                     if (isComplete) {
-                      bgGradient = 'linear-gradient(90deg, #16A34A, #16A34Add)';
-                      borderCol = '#4ADE80';
+                      bgGradient = 'linear-gradient(90deg, #0F3E2E, #134E35)';
+                      borderCol = '#2DD4BF';
                     } else if (isBlocked) {
                       bgGradient = 'linear-gradient(90deg, #7F1D1D, #991B1B)';
                       borderCol = '#DC2626';
@@ -234,7 +234,7 @@ export const FleetTimeline: React.FC = () => {
                         initial={{ opacity: 0.8 }}
                         animate={{
                           opacity: isActive ? [0.85, 1, 0.85] : 0.95,
-                          boxShadow: isActive ? '0 0 10px rgba(2,132,199,0.5)' : 'none',
+                          boxShadow: isActive ? '0 0 10px rgba(45,212,191,0.5)' : 'none',
                         }}
                         transition={{ duration: 1.5, repeat: isActive ? Infinity : 0 }}
                         className="absolute top-0.5 bottom-0.5 rounded px-1.5 flex items-center justify-between overflow-hidden cursor-default"

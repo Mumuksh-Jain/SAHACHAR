@@ -55,13 +55,13 @@ export const AccessHorizonPanel: React.FC = () => {
       className="flex flex-col gap-3 h-full overflow-y-auto"
     >
       {/* Settlement header - Apple Grade Frosted Card */}
-      <div className="rounded-2xl p-4 backdrop-blur-xl" style={{ background: 'rgba(20, 34, 54, 0.85)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+      <div className="rounded-2xl p-4 backdrop-blur-xl" style={{ background: 'rgba(11, 31, 22, 0.94)', border: '1px solid rgba(45, 212, 191, 0.22)' }}>
         <div className="flex items-start justify-between mb-3">
           <div>
             <div className="flex items-center gap-2">
               <span className="font-bold text-base text-white">{settlement.name}</span>
               {settlement.odiaName && (
-                <span className="text-xs px-2 py-0.5 rounded-md bg-cyan-950/70 border border-cyan-500/30 text-cyan-300 font-medium">
+                <span className="text-xs px-2 py-0.5 rounded-md bg-[#0F3E2E] border border-[#2DD4BF]/40 text-[#2DD4BF] font-medium">
                   {settlement.odiaName}
                 </span>
               )}
@@ -71,7 +71,7 @@ export const AccessHorizonPanel: React.FC = () => {
               <span>•</span>
               <span>Ward {settlement.wardNo || '04'}</span>
               <span>•</span>
-              <span className="text-cyan-400 font-semibold">{settlement.elevationMeters || 6.2}m Elev</span>
+              <span className="text-[#2DD4BF] font-semibold">{settlement.elevationMeters || 6.2}m Elev</span>
             </div>
           </div>
           <div className="text-right">
@@ -84,11 +84,11 @@ export const AccessHorizonPanel: React.FC = () => {
 
         {/* Frontline Cadre Banner */}
         {settlement.ashaWorker && (
-          <div className="mb-3 p-2.5 rounded-xl bg-slate-900/80 border border-emerald-500/30 flex items-center justify-between">
+          <div className="mb-3 p-2.5 rounded-xl bg-[#07140E] border border-[#2DD4BF]/30 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-base">👩‍⚕️</span>
               <div>
-                <div className="text-[11px] font-bold text-emerald-300">
+                <div className="text-[11px] font-bold text-[#2DD4BF]">
                   ASHA Didi: {typeof settlement.ashaWorker === 'object' ? (settlement.ashaWorker as any).name : settlement.ashaWorker}
                 </div>
                 <div className="text-[10px] font-mono text-slate-400">
@@ -98,7 +98,7 @@ export const AccessHorizonPanel: React.FC = () => {
             </div>
             <a
               href={`tel:${typeof settlement.ashaWorker === 'object' ? (settlement.ashaWorker as any).phone : '+919437128901'}`}
-              className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30 transition-all"
+              className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#0F3E2E] text-[#2DD4BF] border border-[#2DD4BF]/40 hover:bg-[#134E35] transition-all"
             >
               CALL DIDI
             </a>
@@ -107,9 +107,9 @@ export const AccessHorizonPanel: React.FC = () => {
 
         {/* Road Infrastructure Vulnerability */}
         <div className="mb-3 px-2.5 py-1.5 rounded-xl text-[11px] flex items-center justify-between font-mono" style={{
-          background: settlement.roadType === 'kutcha' ? 'rgba(239, 68, 68, 0.12)' : 'rgba(16, 185, 129, 0.12)',
-          border: `1px solid ${settlement.roadType === 'kutcha' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)'}`,
-          color: settlement.roadType === 'kutcha' ? '#fca5a5' : '#86efac'
+          background: settlement.roadType === 'kutcha' ? 'rgba(239, 68, 68, 0.12)' : 'rgba(37, 99, 235, 0.15)',
+          border: `1px solid ${settlement.roadType === 'kutcha' ? 'rgba(239, 68, 68, 0.3)' : 'rgba(56, 189, 248, 0.35)'}`,
+          color: settlement.roadType === 'kutcha' ? '#fca5a5' : '#93c5fd'
         }}>
           <span>ROAD: {settlement.roadType === 'kutcha' ? 'MUD KUTCHA TRACK (BREACH PRONE)' : 'PMGSY ALL-WEATHER PUCCA'}</span>
           <span>{settlement.riverProximityKm ? `${settlement.riverProximityKm}km to River` : 'Paika Basin'}</span>
@@ -277,35 +277,35 @@ export const RouteComparisonPanel: React.FC = () => {
         onClick={() => setSelected('R3')}
         animate={{
           scale: selected === 'R3' ? 1.01 : 1,
-          boxShadow: selected === 'R3' ? '0 0 25px rgba(2, 132, 199, 0.25)' : '0 0 0px transparent',
+          boxShadow: selected === 'R3' ? '0 0 25px rgba(45, 212, 191, 0.3)' : '0 0 0px transparent',
         }}
         className="rounded-2xl p-3.5 cursor-pointer backdrop-blur-xl transition-all"
         style={{
-          background: selected === 'R3' ? 'rgba(16, 28, 42, 0.95)' : 'rgba(18, 24, 34, 0.85)',
-          border: `1.5px solid ${selected === 'R3' ? '#0284c7' : 'rgba(220, 195, 165, 0.12)'}`,
+          background: selected === 'R3' ? 'rgba(15, 62, 46, 0.95)' : 'rgba(11, 31, 22, 0.85)',
+          border: `1.5px solid ${selected === 'R3' ? '#2DD4BF' : 'rgba(45, 212, 191, 0.18)'}`,
         }}
       >
         <div className="flex justify-between items-start mb-2">
           <div>
             <div className="font-bold text-sm text-white flex items-center gap-2">
               <span>ROUTE R3</span>
-              <span className="text-[10px] font-mono font-bold text-cyan-300">ELEVATED BUND CORRIDOR</span>
+              <span className="text-[10px] font-mono font-bold text-[#2DD4BF]">ELEVATED BUND CORRIDOR</span>
             </div>
             <div className="text-[11px] text-slate-400">{r3.name}</div>
           </div>
-          <div className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/50">
+          <div className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#0F3E2E] text-[#2DD4BF] border border-[#2DD4BF]/50">
             ✓ RECOMMENDED LIFELINE
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 bg-slate-900/60 p-2 rounded-xl border border-white/5 my-2">
+        <div className="grid grid-cols-3 gap-2 bg-[#07140E] p-2 rounded-xl border border-white/5 my-2">
           {[
             { label: 'Distance', value: `${r3.distanceKm} km` },
             { label: 'Transit Time', value: `${r3.durationMin} min` },
             { label: 'Safety Margin', value: `${r3.accessMarginMin} min`, good: true },
           ].map(item => (
             <div key={item.label} className="text-center">
-              <div className="font-mono font-bold text-sm" style={{ color: item.good ? '#10b981' : '#FAF8F5' }}>
+              <div className="font-mono font-bold text-sm" style={{ color: item.good ? '#2DD4BF' : '#FAF8F5' }}>
                 {item.value}
               </div>
               <div className="text-[9px] text-slate-400 font-mono">{item.label}</div>
@@ -313,7 +313,7 @@ export const RouteComparisonPanel: React.FC = () => {
           ))}
         </div>
 
-        <div className="text-[11px] text-cyan-200 leading-relaxed font-sans mt-1">
+        <div className="text-[11px] text-slate-200 leading-relaxed font-sans mt-1">
           <strong>Operational Assurance:</strong> 1.6 km longer, but provides <strong>38 minutes of access margin</strong> along reinforced embankments. Guarantees safe transit for both human evacuees and livestock.
         </div>
       </motion.div>
@@ -321,21 +321,21 @@ export const RouteComparisonPanel: React.FC = () => {
       {/* SAHACHAR Decision Note */}
       <div className="rounded-2xl p-3 text-xs text-slate-300 backdrop-blur-xl leading-relaxed"
         style={{
-          background: 'rgba(14, 18, 26, 0.9)',
-          border: '1px solid rgba(220, 195, 165, 0.12)',
+          background: 'rgba(7, 20, 14, 0.9)',
+          border: '1px solid rgba(45, 212, 191, 0.2)',
         }}>
-        <strong className="text-amber-300">SAHACHAR Decision Rationale:</strong> Speed is meaningless if the bridge floods before arrival. Route R3 preserves life and livestock without entrapment risk.
+        <strong className="text-[#E05A1B]">SAHACHAR Decision Rationale:</strong> Speed is meaningless if the bridge floods before arrival. Route R3 preserves life and livestock without entrapment risk.
       </div>
 
       <motion.button
         whileTap={{ scale: 0.98 }}
         onClick={() => { setSelected('R3'); setActivePanel('vehicle_inspector'); }}
-        className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition-all shadow-lg cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition-all shadow-lg cursor-pointer uppercase tracking-wider"
         style={{
-          background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(37, 99, 235, 0.9) 100%)',
-          color: '#FAF8F5',
-          border: '1px solid rgba(56, 189, 248, 0.5)',
-          boxShadow: '0 4px 20px rgba(2, 132, 199, 0.3)',
+          background: 'linear-gradient(135deg, #E05A1B 0%, #EA580C 100%)',
+          color: '#FFFFFF',
+          border: '1px solid #F97316',
+          boxShadow: '0 4px 20px rgba(224, 90, 27, 0.45)',
         }}
       >
         SELECT RESCUE VEHICLE T07 (LIVESTOCK) <ChevronRight size={14} />

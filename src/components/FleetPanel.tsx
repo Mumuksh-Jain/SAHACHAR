@@ -41,15 +41,15 @@ const typeMetadata: Record<string, { label: string; icon: string; role: string; 
 const statusConfig: Record<VehicleStatus, { label: string; bg: string; text: string; border: string }> = {
   AVAILABLE: {
     label: 'STAGED & READY',
-    bg: 'rgba(22, 163, 74, 0.12)',
-    text: '#4ade80',
-    border: 'rgba(22, 163, 74, 0.35)',
+    bg: 'rgba(45, 212, 191, 0.14)',
+    text: '#2DD4BF',
+    border: 'rgba(45, 212, 191, 0.35)',
   },
   RESERVED: {
     label: 'RESERVED TO CONVOY',
-    bg: 'rgba(2, 132, 199, 0.12)',
-    text: '#38bdf8',
-    border: 'rgba(2, 132, 199, 0.35)',
+    bg: 'rgba(45, 212, 191, 0.14)',
+    text: '#2DD4BF',
+    border: 'rgba(45, 212, 191, 0.35)',
   },
   DRIVER_ACK_PENDING: {
     label: 'RADIO ACK PENDING',
@@ -59,15 +59,15 @@ const statusConfig: Record<VehicleStatus, { label: string; bg: string; text: str
   },
   DISPATCHED: {
     label: 'DISPATCH ORDERED',
-    bg: 'rgba(147, 51, 234, 0.14)',
-    text: '#c084fc',
-    border: 'rgba(147, 51, 234, 0.4)',
+    bg: 'rgba(224, 90, 27, 0.18)',
+    text: '#E05A1B',
+    border: 'rgba(224, 90, 27, 0.45)',
   },
   EN_ROUTE_TO_PICKUP: {
     label: 'INBOUND TO HAMLET',
-    bg: 'rgba(2, 132, 199, 0.15)',
-    text: '#38bdf8',
-    border: 'rgba(2, 132, 199, 0.45)',
+    bg: 'rgba(224, 90, 27, 0.18)',
+    text: '#E05A1B',
+    border: 'rgba(224, 90, 27, 0.5)',
   },
   AT_PICKUP: {
     label: 'AT ASSEMBLY POINT',
@@ -83,21 +83,21 @@ const statusConfig: Record<VehicleStatus, { label: string; bg: string; text: str
   },
   EN_ROUTE: {
     label: 'CONVOY IN TRANSIT',
-    bg: 'rgba(2, 132, 199, 0.18)',
-    text: '#38bdf8',
-    border: 'rgba(2, 132, 199, 0.5)',
+    bg: 'rgba(224, 90, 27, 0.22)',
+    text: '#E05A1B',
+    border: 'rgba(224, 90, 27, 0.55)',
   },
   ARRIVED: {
     label: 'AT SANCTUARY CAMP',
-    bg: 'rgba(22, 163, 74, 0.15)',
-    text: '#4ade80',
-    border: 'rgba(22, 163, 74, 0.4)',
+    bg: 'rgba(45, 212, 191, 0.18)',
+    text: '#2DD4BF',
+    border: 'rgba(45, 212, 191, 0.45)',
   },
   UNLOADING: {
     label: 'SAFE OFF-LOADING',
-    bg: 'rgba(22, 163, 74, 0.18)',
-    text: '#86efac',
-    border: 'rgba(22, 163, 74, 0.45)',
+    bg: 'rgba(45, 212, 191, 0.18)',
+    text: '#2DD4BF',
+    border: 'rgba(45, 212, 191, 0.45)',
   },
   TURNAROUND: {
     label: 'SORTIE TURNAROUND',
@@ -133,8 +133,8 @@ export const FleetPanel: React.FC = () => {
       {/* Fleet Context Header */}
       <div className="px-1 py-1 flex items-center justify-between">
         <div>
-          <div className="text-[11px] font-mono tracking-widest text-[#E2D9CE]/60 uppercase font-bold flex items-center gap-1.5">
-            <Compass size={13} className="text-[#0284C7]" />
+          <div className="text-[11px] font-mono tracking-widest text-[#E8F3ED]/60 uppercase font-bold flex items-center gap-1.5">
+            <Compass size={13} className="text-[#2DD4BF]" />
             DEPLOYED RESCUE CONVOYS
           </div>
           <div className="text-[10px] text-[#E2D9CE]/40 font-sans">
@@ -252,30 +252,30 @@ export const FleetPanel: React.FC = () => {
                 </div>
 
                 {/* Driver & VHF Radio Channel */}
-                <div className="flex items-center justify-between text-[11px] text-[#E2D9CE]/60 font-mono mb-2 pt-1 border-t border-white/5">
+                <div className="flex items-center justify-between text-[11px] text-[#E8F3ED]/60 font-mono mb-2 pt-1 border-t border-white/5">
                   <span className="flex items-center gap-1.5">
                     <span className="text-[#FAF8F5] font-sans font-semibold">👨‍✈️ {v.driver}</span>
                   </span>
-                  <span className="text-[10px] text-[#E2D9CE]/40 flex items-center gap-1">
-                    <Radio size={10} className="text-[#0284C7]" /> LOC: {v.assignedLocation}
+                  <span className="text-[10px] text-[#E8F3ED]/40 flex items-center gap-1">
+                    <Radio size={10} className="text-[#2DD4BF]" /> LOC: {v.assignedLocation || 'BASE STAGING'}
                   </span>
                 </div>
 
                 {/* Progress bar if en route */}
                 {active && progress > 0 && (
-                  <div className="mb-2 bg-[#0A0D14] p-2 rounded-xl border border-white/5">
+                  <div className="mb-2 bg-[#07140E] p-2 rounded-xl border border-white/5">
                     <div className="flex justify-between items-center text-[10px] font-mono mb-1">
-                      <span className="text-[#E2D9CE]/60 flex items-center gap-1">
-                        <Gauge size={11} className="text-[#0284C7]" /> CORRIDOR TRANSIT
+                      <span className="text-[#E8F3ED]/60 flex items-center gap-1">
+                        <Gauge size={11} className="text-[#2DD4BF]" /> CORRIDOR TRANSIT
                       </span>
-                      <span className="font-bold text-[#38BDF8]">{Math.round(progress)}% COMPLETE</span>
+                      <span className="font-bold text-[#2DD4BF]">{Math.round(progress)}% COMPLETE</span>
                     </div>
                     <div className="h-1.5 rounded-full w-full bg-slate-900/80 overflow-hidden">
                       <motion.div
                         className="h-full rounded-full"
                         style={{
                           width: `${progress}%`,
-                          background: 'linear-gradient(90deg, #0284C7, #38BDF8)',
+                          background: 'linear-gradient(90deg, #0F3E2E, #2DD4BF)',
                         }}
                       />
                     </div>
@@ -295,7 +295,7 @@ export const FleetPanel: React.FC = () => {
                       </span>
                     )}
                     {active && speed > 0 && (
-                      <span className="text-[#16A34A] font-bold">{speed} km/h</span>
+                      <span className="text-[#38bdf8] font-bold">{speed} km/h</span>
                     )}
                   </div>
                 )}
@@ -344,15 +344,15 @@ export const VehicleTrackingPanel: React.FC = () => {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="crisis-card rounded-2xl p-3.5 mx-2 mb-2 ring-1 ring-[#0284C7]/40 shadow-xl"
+      className="crisis-card rounded-2xl p-3.5 mx-2 mb-2 ring-1 ring-[#2DD4BF]/40 shadow-xl"
     >
       <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-white/10">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#0284C7] animate-ping" />
+          <div className="w-2.5 h-2.5 rounded-full bg-[#E05A1B] animate-ping" />
           <span className="font-mono font-black text-sm text-[#FAF8F5]">{vehicle.id} LIVE TELEMETRY</span>
         </div>
         {mission && (
-          <span className="text-[10px] text-[#38BDF8] font-mono px-2 py-0.5 rounded bg-[#0284C7]/15 border border-[#0284C7]/30 font-bold">
+          <span className="text-[10px] text-[#2DD4BF] font-mono px-2 py-0.5 rounded bg-[#0F3E2E]/60 border border-[#2DD4BF]/30 font-bold">
             MISSION {mission.id}
           </span>
         )}
@@ -379,16 +379,16 @@ export const VehicleTrackingPanel: React.FC = () => {
       {/* Bridge Margin Indicator */}
       {progress > 0 && progress < 100 && (
         <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-xs">
-          <span className="text-[11px] text-[#E2D9CE]/60 flex items-center gap-1 font-medium">
-            <ShieldAlert size={12} className={bridgeMargin > 15 ? 'text-[#16A34A]' : 'text-[#DC2626]'} />
+          <span className="text-[11px] text-[#E8F3ED]/70 flex items-center gap-1 font-medium">
+            <ShieldAlert size={12} className={bridgeMargin > 15 ? 'text-[#2DD4BF]' : 'text-[#DC2626]'} />
             PAIKA BRIDGE CLEARANCE MARGIN:
           </span>
           <span
             className="font-mono font-bold text-xs px-2 py-0.5 rounded"
             style={{
-              background: bridgeMargin > 20 ? 'rgba(22, 163, 74, 0.15)' : 'rgba(220, 38, 38, 0.2)',
-              color: bridgeMargin > 20 ? '#4ade80' : '#f87171',
-              border: `1px solid ${bridgeMargin > 20 ? 'rgba(22, 163, 74, 0.35)' : 'rgba(220, 38, 38, 0.4)'}`,
+              background: bridgeMargin > 20 ? 'rgba(45, 212, 191, 0.15)' : 'rgba(220, 38, 38, 0.2)',
+              color: bridgeMargin > 20 ? '#2DD4BF' : '#f87171',
+              border: `1px solid ${bridgeMargin > 20 ? 'rgba(45, 212, 191, 0.35)' : 'rgba(220, 38, 38, 0.4)'}`,
             }}
           >
             {bridgeMargin > 0 ? `+${bridgeMargin} MIN BUFFER (SAFE)` : 'BREACH IMMINENT'}

@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useDemoStore } from './store/useDemoStore';
 import { MissionControl } from './pages/MissionControl';
 import { DriverView, CitizenView, FieldView } from './pages/MobileViews';
+import { LandingPage } from './pages/LandingPage';
 import { BootSequence } from './components/BootSequence';
 
 function App() {
@@ -25,6 +26,17 @@ function App() {
       </AnimatePresence>
 
       <AnimatePresence mode="wait">
+        {appView === 'landing' && (
+          <motion.div
+            key="landing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="w-full min-h-screen"
+          >
+            <LandingPage />
+          </motion.div>
+        )}
         {appView === 'mission_control' && (
           <motion.div
             key="mission_control"

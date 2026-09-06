@@ -58,7 +58,7 @@ function playVictoryFanfare() {
 // ─── Notification Stack ──────────────────────────────────────────────
 const NotificationStack: React.FC = () => {
   const { notifications } = useDemoStore();
-  const recent = notifications.slice(0, 3);
+  const recent = (notifications || []).slice(0, 3);
 
   return (
     <div className="absolute top-2 right-2 z-20 flex flex-col gap-1.5 pointer-events-none" style={{ width: 300 }}>
@@ -71,20 +71,20 @@ const NotificationStack: React.FC = () => {
             exit={{ opacity: 0, x: 30 }}
             className="rounded-xl p-3 pointer-events-auto"
             style={{
-              background: '#0E1A2B',
+              background: '#0B1F16',
               border: `1px solid ${
                 n.type === 'critical' ? 'rgba(239,68,68,0.4)' :
-                  n.type === 'success' ? 'rgba(16,185,129,0.4)' :
+                  n.type === 'success' ? 'rgba(45,212,191,0.4)' :
                     n.type === 'warning' ? 'rgba(245,158,11,0.4)' :
-                      'rgba(30,50,72,0.8)'
+                      'rgba(45,212,191,0.2)'
               }`,
               borderLeft: `3px solid ${
                 n.type === 'critical' ? '#ef4444' :
-                  n.type === 'success' ? '#10b981' :
+                  n.type === 'success' ? '#2DD4BF' :
                     n.type === 'warning' ? '#f59e0b' :
-                      '#06b6d4'
+                      '#2DD4BF'
               }`,
-              boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
             }}
           >
             <div className="flex items-start gap-2">
@@ -151,8 +151,8 @@ const SettlementList: React.FC = () => {
   const statusColor: Record<string, string> = {
     AT_RISK: '#e04838',
     WATCH: '#d97706',
-    MONITORING: '#0284c7',
-    NORMAL: '#16a34a',
+    MONITORING: '#2DD4BF',
+    NORMAL: '#749F82',
   };
 
   const filteredSettlements = settlements.filter(s => {
@@ -167,10 +167,10 @@ const SettlementList: React.FC = () => {
       {/* Incident summary - Crisis Impact Matrix */}
       <div className="rounded-2xl p-3.5 backdrop-blur-xl shadow-lg"
         style={{
-          background: 'rgba(18, 24, 34, 0.92)',
-          border: '1px solid rgba(220, 195, 165, 0.16)',
+          background: 'rgba(11, 31, 22, 0.94)',
+          border: '1px solid rgba(45, 212, 191, 0.2)',
         }}>
-        <div className="text-[10px] font-mono font-bold tracking-widest text-amber-400 mb-2.5 uppercase flex items-center justify-between border-b border-white/5 pb-1.5">
+        <div className="text-[10px] font-mono font-bold tracking-widest text-[#E05A1B] mb-2.5 uppercase flex items-center justify-between border-b border-white/5 pb-1.5">
           <span>{language === 'or' ? 'ଗ୍ରାମ ପଞ୍ଚାୟତ ସଙ୍କଟ ମାଟ୍ରିକ୍ସ' : 'HUMAN & LIVELIHOOD IMPACT MATRIX'}</span>
           <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
         </div>
@@ -178,7 +178,7 @@ const SettlementList: React.FC = () => {
           {[
             { label: language === 'or' ? 'ବିପଦରେ' : 'ISOLATION RISK', value: settlements.filter(s => s.status === 'AT_RISK').length, color: '#e04838', bg: 'rgba(224,72,56,0.18)' },
             { label: language === 'or' ? 'ସତର୍କ' : 'WATCH ZONE', value: settlements.filter(s => s.status === 'WATCH').length, color: '#d97706', bg: 'rgba(217,119,6,0.18)' },
-            { label: language === 'or' ? 'ସୁରକ୍ଷିତ' : 'HIGH GROUND', value: settlements.filter(s => s.status === 'MONITORING' || s.status === 'NORMAL').length, color: '#16a34a', bg: 'rgba(22,163,74,0.18)' },
+            { label: language === 'or' ? 'ସୁରକ୍ଷିତ' : 'HIGH GROUND', value: settlements.filter(s => s.status === 'MONITORING' || s.status === 'NORMAL').length, color: '#2DD4BF', bg: 'rgba(45,212,191,0.15)' },
           ].map(item => (
             <div key={item.label} className="text-center rounded-xl p-2 border" style={{ background: item.bg, borderColor: `${item.color}50` }}>
               <div className="font-mono font-black text-xl" style={{ color: item.color }}>{item.value}</div>
@@ -200,8 +200,8 @@ const SettlementList: React.FC = () => {
               onClick={() => setFilter(f.id as any)}
               className={`px-2 py-1 rounded-lg text-[10px] font-mono font-bold transition-all whitespace-nowrap ${
                 filter === f.id
-                  ? 'bg-amber-500/25 text-amber-200 border border-amber-500/50 shadow-sm'
-                  : 'bg-slate-900/60 text-slate-400 hover:text-slate-200 border border-transparent'
+                  ? 'bg-[#E05A1B] text-white border border-[#F97316] shadow-sm'
+                  : 'bg-black/30 text-slate-400 hover:text-slate-200 border border-transparent'
               }`}
             >
               {f.label}
@@ -213,20 +213,20 @@ const SettlementList: React.FC = () => {
       {/* Frontline Cadre Dispatch Badge */}
       <div className="px-3 py-2 rounded-xl text-[11px] font-mono flex items-center justify-between text-slate-300 shadow-sm"
         style={{
-          background: 'rgba(18, 24, 34, 0.85)',
-          border: '1px solid rgba(220, 195, 165, 0.12)',
+          background: 'rgba(11, 31, 22, 0.85)',
+          border: '1px solid rgba(45, 212, 191, 0.25)',
         }}>
         <span className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#2DD4BF] animate-pulse" />
           <span className="text-slate-200">{language === 'or' ? 'ଆଶା ଦିଦି ଏବଂ ଆପଦା ମିତ୍ର ସଂଯୋଗ' : 'ASHA DIDIS & AAPDA MITRA MOBILIZED'}</span>
         </span>
-        <span className="text-amber-400 font-bold">12 GPs ACTIVE</span>
+        <span className="text-[#2DD4BF] font-bold">12 GPs ACTIVE</span>
       </div>
 
       {/* Settlement list */}
       <div className="text-[10px] font-mono font-bold tracking-widest text-slate-400 px-1 uppercase flex items-center justify-between">
         <span>{language === 'or' ? 'ଗ୍ରାମ ସମୂହ' : 'COMMUNITIES UNDER THREAT'} ({filteredSettlements.length})</span>
-        <span className="text-amber-400/80 font-normal">{language === 'or' ? 'ବିବରଣୀ ପାଇଁ କ୍ଲିକ କରନ୍ତୁ' : 'SELECT TO INSPECT'}</span>
+        <span className="text-[#2DD4BF] font-normal">{language === 'or' ? 'ବିବରଣୀ ପାଇଁ କ୍ଲିକ କରନ୍ତୁ' : 'SELECT TO INSPECT'}</span>
       </div>
 
       {filteredSettlements.map(s => {
@@ -244,8 +244,8 @@ const SettlementList: React.FC = () => {
             }}
             className="rounded-2xl p-3.5 cursor-pointer transition-all shadow-md backdrop-blur-md relative overflow-hidden"
             style={{
-              background: isAtRisk ? 'rgba(38, 16, 20, 0.92)' : 'rgba(18, 24, 34, 0.88)',
-              border: `1.5px solid ${isAtRisk ? 'rgba(224, 72, 56, 0.6)' : 'rgba(220, 195, 165, 0.12)'}`,
+              background: isAtRisk ? 'rgba(45, 16, 20, 0.92)' : 'rgba(11, 31, 22, 0.92)',
+              border: `1.5px solid ${isAtRisk ? 'rgba(224, 72, 56, 0.6)' : 'rgba(45, 212, 191, 0.2)'}`,
               boxShadow: isAtRisk ? '0 0 24px rgba(224, 72, 56, 0.25)' : '0 4px 14px rgba(0,0,0,0.3)',
             }}
           >
@@ -275,7 +275,7 @@ const SettlementList: React.FC = () => {
             <div className="text-[11px] text-slate-400 font-mono mb-2 flex items-center justify-between">
               <span>GP: <strong className="text-slate-200">{s.gramPanchayat || 'Tirtol'}</strong> (W-{s.wardNo || '04'})</span>
               {s.ashaWorker && (
-                <span className="text-emerald-300 flex items-center gap-1 font-semibold">
+                <span className="text-sky-300 flex items-center gap-1 font-semibold">
                   <span>👩‍⚕️</span> {typeof s.ashaWorker === 'object' ? (s.ashaWorker as any).name?.split(' ')[0] : s.ashaWorker.split(' ')[0]}
                 </span>
               )}
@@ -318,10 +318,10 @@ const SettlementList: React.FC = () => {
               <div className="mt-2.5 pt-2 border-t border-white/10 flex flex-col gap-1 text-[10px] font-mono">
                 <div className="flex justify-between text-slate-300">
                   <span>CITIZENS SECURED</span>
-                  <span className="text-emerald-400 font-bold">{s.humanEvacuation}%</span>
+                  <span className="text-sky-400 font-bold">{s.humanEvacuation}%</span>
                 </div>
                 <div className="h-1.5 rounded-full overflow-hidden bg-slate-900">
-                  <div className="h-full rounded-full bg-emerald-400 transition-all duration-500" style={{ width: `${s.humanEvacuation}%` }} />
+                  <div className="h-full rounded-full bg-blue-500 transition-all duration-500" style={{ width: `${s.humanEvacuation}%` }} />
                 </div>
 
                 <div className="flex justify-between text-slate-300 mt-1">
@@ -347,7 +347,7 @@ type RightTab = 'missions' | 'fleet';
 const TopBar: React.FC = () => {
   const { demoStage, scenarioTime, activePlanVersion, notifications, setAppView, triggerBoot, language, setLanguage, riverGauges } = useDemoStore();
   const [tick, setTick] = useState(scenarioTime);
-  const unread = notifications.length;
+  const unread = (notifications || []).length;
 
   useEffect(() => {
     setTick(scenarioTime);
@@ -358,43 +358,43 @@ const TopBar: React.FC = () => {
   return (
     <div className="flex items-center justify-between px-6 py-2.5 shadow-xl relative z-20 backdrop-blur-2xl"
       style={{
-        background: 'rgba(11, 14, 20, 0.96)',
-        borderBottom: '1px solid rgba(220, 195, 165, 0.15)',
+        background: 'rgba(11, 31, 22, 0.98)',
+        borderBottom: '1px solid rgba(45, 212, 191, 0.22)',
       }}>
       {/* Brand & Administrative Jurisdiction with Official SAHACHAR Logo */}
       <div className="flex items-center gap-3.5">
         <SahacharLogo variant="compact" />
 
-        <div className="hidden lg:flex flex-col border-l border-[#E0A53B]/20 pl-3">
+        <div className="hidden lg:flex flex-col border-l border-[#2DD4BF]/30 pl-3">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#1E4B32] border border-[#6A8F3A]/60 text-[#86EFAC] font-bold tracking-wider">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#0F3E2E] border border-[#2DD4BF]/40 text-[#2DD4BF] font-bold tracking-wider">
               {language === 'or' ? 'ଓସଡମା ଆପଦ କମାଣ୍ଡ' : 'OSDMA RURAL CRISIS COMMAND'}
             </span>
-            <span className="text-[#E0A53B] font-mono text-[10px] font-bold">12 GPs UNDER SURGE</span>
+            <span className="text-[#2DD4BF] font-mono text-[10px] font-bold">12 GPs UNDER SURGE</span>
           </div>
-          <div className="text-[10px] font-medium text-[#F2E6D3]/60 truncate mt-0.5 max-w-[280px]">
+          <div className="text-[10px] font-medium text-slate-300 truncate mt-0.5 max-w-[280px]">
             {language === 'or' ? 'ତିର୍ତ୍ତୋଲ ବ୍ଲକ କଣ୍ଟ୍ରୋଲ ରୁମ • ଜଗତସିଂହପୁର' : 'Tirtol Block Emergency Operations Centre • Jagatsinghpur'}
           </div>
         </div>
 
-        <div className="h-7 w-px mx-1" style={{ background: 'rgba(224, 165, 59, 0.2)' }} />
+        <div className="h-7 w-px mx-1" style={{ background: 'rgba(45, 212, 191, 0.25)' }} />
 
         {/* Live River Gauge Status Badge */}
         {paikaGauge && (
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-amber-500/40 text-xs font-mono">
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#07140E] border border-[#2DD4BF]/40 text-xs font-mono shadow-sm">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
             <span className="text-slate-400">PAIKA SIPHON:</span>
-            <span className="text-amber-300 font-black">{paikaGauge.currentLevelM}m</span>
-            <span className="text-[10px] text-red-400 font-bold uppercase">{paikaGauge.status}</span>
+            <span className="text-amber-300 font-black">{paikaGauge.currentLevelM ?? paikaGauge.waterLevel}m</span>
+            <span className="text-[10px] text-red-400 font-bold uppercase">{paikaGauge.status ?? paikaGauge.trend}</span>
           </div>
         )}
 
         {activePlanVersion !== 'NONE' && (
           <div className="px-3 py-1 rounded-xl text-xs font-black font-mono shadow-sm"
             style={{
-              background: activePlanVersion === 'V2' ? 'rgba(224, 72, 56, 0.25)' : 'rgba(217, 119, 6, 0.25)',
-              border: `1.5px solid ${activePlanVersion === 'V2' ? '#e04838' : '#d97706'}`,
-              color: activePlanVersion === 'V2' ? '#fca5a5' : '#fde68a',
+              background: activePlanVersion === 'V2' ? 'rgba(224, 90, 27, 0.25)' : 'rgba(15, 62, 46, 0.4)',
+              border: `1.5px solid ${activePlanVersion === 'V2' ? '#E05A1B' : '#2DD4BF'}`,
+              color: activePlanVersion === 'V2' ? '#FDBA74' : '#2DD4BF',
             }}>
             {activePlanVersion === 'V2' ? 'ADAPTIVE PLAN V2 (REROUTED)' : 'OPTIMIZED PLAN V1'}
           </div>
@@ -403,32 +403,32 @@ const TopBar: React.FC = () => {
 
       {/* Center Clock & Crisis State */}
       <div className="flex items-center gap-4">
-        <div className="text-center px-4 py-1.5 rounded-2xl bg-slate-900/90 border border-white/10 shadow-inner">
-          <div className="font-mono font-black text-xl text-amber-300 tracking-wider">
+        <div className="text-center px-4 py-1.5 rounded-2xl bg-[#07140E] border border-[#2DD4BF]/20 shadow-inner">
+          <div className="font-mono font-black text-xl text-[#2DD4BF] tracking-wider">
             {tick}
           </div>
           <div className="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider">{language === 'or' ? 'ସ୍ଥିତି ସମୟ' : 'CRISIS TIME'}</div>
         </div>
 
         <div className="flex items-center gap-2 px-4 py-1.5 rounded-2xl shadow-md backdrop-blur-md" style={{
-          background: demoStage === 'NORMAL' ? 'rgba(71,85,105,0.25)' :
-            demoStage === 'COMPLETED' ? 'rgba(22,163,74,0.25)' :
-              demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(224,72,56,0.25)' :
-                'rgba(217,119,6,0.25)',
-          border: `1px solid ${demoStage === 'NORMAL' ? '#475569' :
-            demoStage === 'COMPLETED' ? '#16a34a' :
-              demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? '#e04838' :
-                '#d97706'}`,
+          background: demoStage === 'NORMAL' ? 'rgba(15, 62, 46, 0.25)' :
+            demoStage === 'COMPLETED' ? 'rgba(15, 62, 46, 0.5)' :
+              demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(224, 90, 27, 0.25)' :
+                'rgba(15, 62, 46, 0.35)',
+          border: `1px solid ${demoStage === 'NORMAL' ? '#164E3D' :
+            demoStage === 'COMPLETED' ? '#2DD4BF' :
+              demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? '#E05A1B' :
+                '#2DD4BF'}`,
         }}>
           <Activity size={14} className="animate-pulse" style={{
-            color: demoStage === 'NORMAL' ? '#cbd5e1' :
-              demoStage === 'COMPLETED' ? '#4ade80' :
-                demoStage === 'DISRUPTION' ? '#f87171' : '#fbbf24'
+            color: demoStage === 'NORMAL' ? '#749F82' :
+              demoStage === 'COMPLETED' ? '#2DD4BF' :
+                demoStage === 'DISRUPTION' ? '#f87171' : '#2DD4BF'
           }} />
           <span className="text-xs font-mono font-black tracking-wide" style={{
-            color: demoStage === 'NORMAL' ? '#cbd5e1' :
-              demoStage === 'COMPLETED' ? '#4ade80' :
-                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? '#fca5a5' : '#fde68a'
+            color: demoStage === 'NORMAL' ? '#749F82' :
+              demoStage === 'COMPLETED' ? '#2DD4BF' :
+                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? '#FDBA74' : '#2DD4BF'
           }}>
             {demoStage === 'NORMAL' ? (language === 'or' ? 'ନିରୀକ୍ଷଣ ଚାଲିଛି' : 'STANDBY MONITORING') : demoStage.replace(/_/g, ' ')}
           </span>
@@ -438,12 +438,12 @@ const TopBar: React.FC = () => {
       {/* Right controls: Bilingual + Boot + Switchers */}
       <div className="flex items-center gap-2.5">
         {/* Tactile Bilingual Toggle */}
-        <div className="flex items-center p-1 rounded-xl bg-slate-900/90 border border-white/10 shadow-inner">
+        <div className="flex items-center p-1 rounded-xl bg-[#07140E] border border-white/10 shadow-inner">
           <button
             onClick={() => setLanguage('en')}
             className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all ${
               language === 'en'
-                ? 'bg-amber-500/30 text-amber-200 border border-amber-400/40 shadow-sm'
+                ? 'bg-[#E05A1B] text-white border border-[#F97316] shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -453,13 +453,24 @@ const TopBar: React.FC = () => {
             onClick={() => setLanguage('or')}
             className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
               language === 'or'
-                ? 'bg-amber-500/30 text-amber-200 border border-amber-400/40 shadow-sm'
+                ? 'bg-[#E05A1B] text-white border border-[#F97316] shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
             ଓଡ଼ିଆ
           </button>
         </div>
+
+        {/* Landing Page Portal button */}
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setAppView('landing')}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold font-mono text-[#E8F3ED] bg-[#0F3E2E] hover:bg-[#164E3D] border border-[#2DD4BF]/40 shadow-md transition-all cursor-pointer"
+          title="Return to SAHACHAR-DRR Landing Portal"
+        >
+          <span>🏠</span>
+          <span>PORTAL</span>
+        </motion.button>
 
         {/* Reboot / Boot Sequence trigger button */}
         <motion.button
@@ -473,7 +484,7 @@ const TopBar: React.FC = () => {
         </motion.button>
 
         {/* View switchers */}
-        <div className="flex items-center gap-0.5 bg-slate-900/90 p-1 rounded-xl border border-white/10">
+        <div className="flex items-center gap-0.5 bg-[#07140E] p-1 rounded-xl border border-white/10">
           {[
             { label: language === 'or' ? 'ଚାଳକ' : 'DRIVER', view: 'driver' as const },
             { label: language === 'or' ? 'ନାଗରିକ' : 'CITIZEN SOS', view: 'citizen' as const },
@@ -482,7 +493,7 @@ const TopBar: React.FC = () => {
             <button
               key={v.view}
               onClick={() => setAppView(v.view)}
-              className="px-2.5 py-1 rounded-lg text-xs font-bold font-mono transition-all hover:bg-slate-800 text-slate-300 hover:text-white"
+              className="px-2.5 py-1 rounded-lg text-xs font-bold font-mono transition-all hover:bg-[#0F3E2E] text-slate-300 hover:text-white"
             >
               {v.label}
             </button>
@@ -491,7 +502,7 @@ const TopBar: React.FC = () => {
 
         {/* Notification bell */}
         <div className="relative">
-          <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-900/90 border border-white/10">
+          <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#07140E] border border-white/10">
             <Bell size={14} className="text-slate-300" />
             {unread > 0 && (
               <motion.span
@@ -515,7 +526,7 @@ const TopBar: React.FC = () => {
 };
 
 // ─── MAIN MISSION CONTROL PAGE ───────────────────────────────────────
-const CONFETTI_COLORS = ['#E0A53B', '#16A34A', '#FAF8F5', '#F59E0B', '#6A8F3A', '#38BDF8'];
+const CONFETTI_COLORS = ['#2DD4BF', '#E05A1B', '#FAF8F5', '#10B981', '#F97316', '#34D399'];
 
 export const MissionControl: React.FC = () => {
   const { demoStage, selectedVehicleId, setActivePanel, resetDemo } = useDemoStore();
@@ -559,7 +570,7 @@ export const MissionControl: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden relative" style={{ background: '#0A130E' }}>
+    <div className="h-screen w-screen flex flex-col overflow-hidden relative" style={{ background: 'linear-gradient(135deg, #07140E 0%, #0B1F16 50%, #040A07 100%)' }}>
       {/* ── EMERGENCY RED ALERT SCREEN STROBE ── */}
       {isEmergencyAlert && <div className="emergency-screen-alert pointer-events-none" />}
 
@@ -612,8 +623,8 @@ export const MissionControl: React.FC = () => {
               initial={{ opacity: 0, scale: 0.85, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 30 }}
-              className="relative w-full max-w-lg crisis-card-sanctuary rounded-3xl p-6 border-2 border-[#E0A53B] shadow-[0_20px_70px_rgba(224,165,59,0.4)] text-center"
-              style={{ background: 'linear-gradient(160deg, #10261A 0%, #0A140F 100%)' }}
+              className="relative w-full max-w-lg crisis-card-sanctuary rounded-3xl p-6 border-2 border-[#E05A1B] shadow-[0_20px_70px_rgba(224,90,27,0.4)] text-center"
+              style={{ background: 'linear-gradient(160deg, #0F3E2E 0%, #07140E 100%)' }}
             >
               {/* Close Icon */}
               <button
@@ -624,31 +635,31 @@ export const MissionControl: React.FC = () => {
               </button>
 
               {/* Victory Badge */}
-              <div className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center bg-gradient-to-br from-[#E0A53B] to-[#F59E0B] text-white shadow-[0_0_30px_rgba(224,165,59,0.8)]">
+              <div className="w-16 h-16 rounded-full mx-auto mb-3 flex items-center justify-center bg-gradient-to-br from-[#E05A1B] to-[#F97316] text-white shadow-[0_0_30px_rgba(224,90,27,0.8)]">
                 <Award size={36} />
               </div>
 
-              <div className="text-[11px] font-mono font-black text-[#E0A53B] tracking-widest uppercase mb-1">
+              <div className="text-[11px] font-mono font-black text-[#E05A1B] tracking-widest uppercase mb-1">
                 ODISHA STATE DISASTER MANAGEMENT AUTHORITY
               </div>
-              <h2 className="text-2xl font-serif font-black text-[#FAF8F5] tracking-wide mb-2">
+              <h2 className="text-2xl font-serif font-black text-white tracking-wide mb-2">
                 100% SANCTUARY ASSURED
               </h2>
-              <p className="text-xs text-[#F2E6D3]/80 leading-relaxed max-w-md mx-auto mb-4">
+              <p className="text-xs text-slate-200 leading-relaxed max-w-md mx-auto mb-4">
                 Joint human and livestock evacuation successfully concluded across all 12 Gram Panchayats with zero loss of life or family separation.
               </p>
 
               {/* Achievement Metrics */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5">
                 {[
-                  { label: 'CITIZENS SHELTERED', val: '428 / 428', icon: '👤', highlight: '#86EFAC' },
+                  { label: 'CITIZENS SHELTERED', val: '428 / 428', icon: '👤', highlight: '#4ADE80' },
                   { label: 'CATTLE IN GO-SADANS', val: '194 / 194', icon: '🐄', highlight: '#FDE047' },
-                  { label: 'CASUALTIES', val: '0 ZERO', icon: '🛡️', highlight: '#86EFAC' },
-                  { label: 'DEADLINES MISSED', val: '0 ZERO', icon: '⏱️', highlight: '#86EFAC' },
+                  { label: 'CASUALTIES', val: '0 ZERO', icon: '🛡️', highlight: '#2DD4BF' },
+                  { label: 'DEADLINES MISSED', val: '0 ZERO', icon: '⏱️', highlight: '#2DD4BF' },
                 ].map(item => (
-                  <div key={item.label} className="p-2.5 rounded-2xl bg-black/40 border border-white/10">
+                  <div key={item.label} className="p-2.5 rounded-2xl bg-black/40 border border-[#2DD4BF]/20">
                     <span className="text-base mb-0.5 block">{item.icon}</span>
-                    <div className="text-[9px] font-mono text-[#F2E6D3]/60">{item.label}</div>
+                    <div className="text-[9px] font-mono text-slate-400">{item.label}</div>
                     <div className="font-mono font-black text-xs mt-0.5" style={{ color: item.highlight }}>
                       {item.val}
                     </div>
@@ -664,14 +675,14 @@ export const MissionControl: React.FC = () => {
                     setActivePanel('after_action');
                     setShowCelebration(false);
                   }}
-                  className="flex-1 py-3 rounded-2xl font-mono font-bold text-xs uppercase tracking-wider text-black bg-[#E0A53B] hover:bg-[#F3C853] shadow-lg flex items-center justify-center gap-1.5"
+                  className="flex-1 py-3 rounded-2xl font-mono font-bold text-xs uppercase tracking-wider text-white bg-[#E05A1B] hover:bg-[#EA580C] shadow-[0_0_20px_rgba(224,90,27,0.6)] flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <Sparkles size={14} /> VIEW INCIDENT DEBRIEF
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setShowCelebration(false)}
-                  className="px-5 py-3 rounded-2xl font-mono font-bold text-xs uppercase tracking-wider text-[#FAF8F5] bg-white/10 hover:bg-white/20 border border-white/15"
+                  className="px-5 py-3 rounded-2xl font-mono font-bold text-xs uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/15 cursor-pointer"
                 >
                   EXPLORE CENTRAL RADAR
                 </motion.button>
@@ -693,7 +704,7 @@ export const MissionControl: React.FC = () => {
         {/* ── LEFT RAIL (22%) ── */}
         <div
           className="flex flex-col overflow-hidden flex-shrink-0 backdrop-blur-xl"
-          style={{ width: '22%', background: 'rgba(16, 30, 23, 0.92)', borderRight: '1px solid rgba(224, 165, 59, 0.15)' }}
+          style={{ width: '22%', background: 'rgba(11, 31, 22, 0.96)', borderRight: '1px solid rgba(45, 212, 191, 0.22)' }}
         >
           <LeftRailPanel />
         </div>
@@ -707,19 +718,19 @@ export const MissionControl: React.FC = () => {
         {/* ── RIGHT RAIL (22%) ── */}
         <div
           className="flex flex-col overflow-hidden flex-shrink-0 backdrop-blur-xl"
-          style={{ width: '22%', background: 'rgba(16, 30, 23, 0.92)', borderLeft: '1px solid rgba(224, 165, 59, 0.15)' }}
+          style={{ width: '22%', background: 'rgba(11, 31, 22, 0.96)', borderLeft: '1px solid rgba(45, 212, 191, 0.22)' }}
         >
-          {/* Saffron & Forest Green Tab switcher */}
+          {/* SIH Banner Theme Tab switcher */}
           <div className="p-2 border-b border-white/5">
-            <div className="flex p-1 rounded-xl bg-[#0A130E] border border-white/10">
+            <div className="flex p-1 rounded-xl bg-[#07140E] border border-[#164E3D]/50">
               {(['fleet', 'missions'] as RightTab[]).map(tab => (
                 <button
                   key={tab}
                   onClick={() => setRightTab(tab)}
                   className={`flex-1 py-1.5 text-xs font-mono font-bold tracking-wider rounded-lg transition-all ${
                     rightTab === tab
-                      ? 'bg-[#E0A53B]/25 text-[#E0A53B] border border-[#E0A53B]/50 shadow-sm'
-                      : 'text-[#F2E6D3]/60 hover:text-white'
+                      ? 'bg-[#E05A1B] text-white border border-[#F97316] shadow-[0_0_15px_rgba(224,90,27,0.5)]'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   {tab === 'fleet' ? '🚛 FLEET TELEMETRY' : '📋 SORTIE MISSIONS'}

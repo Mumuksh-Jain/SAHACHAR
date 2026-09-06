@@ -36,22 +36,22 @@ export const PlanPanel: React.FC = () => {
       {/* Plan header - Storm & Sanctuary Card */}
       <div className="rounded-2xl p-4 backdrop-blur-xl flex items-center justify-between"
         style={{
-          background: isV2 ? 'rgba(38, 16, 20, 0.92)' : 'rgba(18, 24, 34, 0.92)',
-          border: `1.5px solid ${isV2 ? 'rgba(224, 72, 56, 0.5)' : 'rgba(220, 195, 165, 0.16)'}`,
+          background: isV2 ? 'rgba(45, 18, 20, 0.94)' : 'rgba(11, 31, 22, 0.94)',
+          border: `1.5px solid ${isV2 ? 'rgba(220, 38, 38, 0.5)' : 'rgba(45, 212, 191, 0.25)'}`,
         }}>
         <div>
           <div className="font-mono font-black text-lg tracking-wider" style={{ color: isV2 ? '#fca5a5' : '#FAF8F5' }}>
             {isV2 ? 'ADAPTIVE PLAN V2' : 'EVACUATION ASSURANCE PLAN V1'}
           </div>
           <div className="text-xs text-slate-400 mt-0.5">
-            STATUS: <span className="font-bold font-mono" style={{ color: planStatus === 'APPROVED' || planStatus === 'ACTIVE' ? '#10b981' : '#f59e0b' }}>
+            STATUS: <span className="font-bold font-mono" style={{ color: planStatus === 'APPROVED' || planStatus === 'ACTIVE' ? '#2DD4BF' : '#f59e0b' }}>
               {planStatus.replace('_', ' ')}
             </span>
           </div>
         </div>
         <div className="text-right font-mono text-[10px] text-slate-400">
           <div>Human Convoys: <strong className="text-white">8</strong></div>
-          <div>Cattle Convoys: <strong className="text-amber-400">6</strong></div>
+          <div>Cattle Convoys: <strong className="text-[#E05A1B]">6</strong></div>
           <div>Vehicles Active: <strong className="text-white">7</strong></div>
         </div>
       </div>
@@ -68,8 +68,8 @@ export const PlanPanel: React.FC = () => {
               transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-3 backdrop-blur-xl"
               style={{
-                background: 'rgba(18, 24, 34, 0.88)',
-                border: `1px solid ${isChanged ? 'rgba(224, 72, 56, 0.5)' : 'rgba(220, 195, 165, 0.12)'}`,
+                background: 'rgba(11, 31, 22, 0.88)',
+                border: `1px solid ${isChanged ? 'rgba(220, 38, 38, 0.5)' : 'rgba(45, 212, 191, 0.18)'}`,
               }}
             >
               <div className="flex items-center justify-between mb-1.5">
@@ -150,7 +150,7 @@ export const PlanPanel: React.FC = () => {
                 <div className="text-[10px] text-slate-400 mt-0.5">Camp C1 (Go-Sadan Fodder)</div>
               </div>
             </div>
-            <div className="mt-2 text-[10px] text-center font-mono font-bold text-emerald-300 rounded-xl py-1.5 bg-emerald-950/40 border border-emerald-500/30">
+            <div className="mt-2 text-[10px] text-center font-mono font-bold text-sky-300 rounded-xl py-1.5 bg-blue-950/50 border border-blue-500/30">
               DUAL TRACKING ASSURANCE: FAMILY REUNION CODE #H27-M01 ACTIVE ✓
             </div>
           </motion.div>
@@ -162,10 +162,10 @@ export const PlanPanel: React.FC = () => {
         onClick={() => setActivePanel('approval')}
         className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition-all shadow-lg cursor-pointer"
         style={{
-          background: 'linear-gradient(135deg, rgba(22, 163, 74, 0.9) 0%, rgba(21, 128, 61, 0.9) 100%)',
-          color: '#FAF8F5',
-          border: '1px solid rgba(74, 222, 128, 0.5)',
-          boxShadow: '0 4px 20px rgba(22, 163, 74, 0.3)',
+          background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.95) 0%, rgba(29, 78, 216, 0.95) 100%)',
+          color: '#FFFFFF',
+          border: '1px solid rgba(56, 189, 248, 0.5)',
+          boxShadow: '0 4px 20px rgba(37, 99, 235, 0.35)',
         }}
       >
         <Shield size={14} /> FORWARD FOR INCIDENT COMMAND APPROVAL <ChevronRight size={14} />
@@ -235,7 +235,7 @@ export const ApprovalPanel: React.FC = () => {
           <div key={row.label} className="flex justify-between items-center py-2 border-b border-white/5">
             <span className="text-xs text-slate-300 font-medium">{row.label}</span>
             <span className="text-xs font-mono font-bold" style={{
-              color: row.urgent ? '#f59e0b' : row.good ? '#22c55e' : '#FAF8F5'
+              color: row.urgent ? '#f59e0b' : row.good ? '#38bdf8' : '#FAF8F5'
             }}>
               {row.value}
             </span>
@@ -249,12 +249,12 @@ export const ApprovalPanel: React.FC = () => {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={handleApprove}
-              className="w-full py-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+              className="w-full py-3 rounded-xl text-xs font-mono font-bold flex items-center justify-center gap-2 cursor-pointer shadow-lg uppercase tracking-wider"
               style={{
-                background: 'linear-gradient(135deg, rgba(22, 163, 74, 0.9) 0%, rgba(21, 128, 61, 0.9) 100%)',
-                color: '#FAF8F5',
-                border: '1px solid rgba(74, 222, 128, 0.5)',
-                boxShadow: '0 4px 20px rgba(22, 163, 74, 0.35)',
+                background: 'linear-gradient(135deg, #E05A1B 0%, #EA580C 100%)',
+                color: '#FFFFFF',
+                border: '1px solid #F97316',
+                boxShadow: '0 4px 25px rgba(224, 90, 27, 0.45)',
               }}
             >
               <Shield size={16} /> AUTHORIZE & DISPATCH {isV2 ? 'EMERGENCY PLAN V2' : 'PLAN V1'}
@@ -269,9 +269,9 @@ export const ApprovalPanel: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="flex flex-col items-center gap-3 py-6"
           >
-            <CheckCircle size={36} color="#22c55e" />
-            <div className="font-mono font-black text-sm text-emerald-400">PLAN {isV2 ? 'V2' : 'V1'} OFFICIALLY AUTHORIZED</div>
-            <div className="text-xs text-slate-400 font-mono">Disaster transport convoy alerted immediately</div>
+            <CheckCircle size={36} color="#2DD4BF" />
+            <div className="font-mono font-black text-sm text-[#2DD4BF]">PLAN {isV2 ? 'V2' : 'V1'} OFFICIALLY AUTHORIZED</div>
+            <div className="text-xs text-slate-300 font-mono">Disaster transport convoy alerted immediately</div>
           </motion.div>
         )}
 
@@ -282,11 +282,11 @@ export const ApprovalPanel: React.FC = () => {
             animate={{ opacity: 1 }}
             className="rounded-2xl p-3.5 backdrop-blur-xl"
             style={{
-              background: 'rgba(18, 24, 34, 0.92)',
-              border: '1px solid rgba(220, 195, 165, 0.14)',
+              background: 'rgba(11, 31, 22, 0.94)',
+              border: '1px solid rgba(45, 212, 191, 0.25)',
             }}
           >
-            <div className="text-[10px] font-mono font-bold text-amber-400 mb-2 uppercase">RESERVING CONVOY UNITS...</div>
+            <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-2 uppercase">RESERVING CONVOY UNITS...</div>
             {['B04 (Bus)', 'T07 (Cattle)', 'T09 (Cattle)', 'M01 (Minibus)', 'B06 (Bus)'].map((vid, i) => (
               <motion.div
                 key={vid}
@@ -296,10 +296,10 @@ export const ApprovalPanel: React.FC = () => {
                 className="flex justify-between items-center py-1.5 border-b border-white/5"
               >
                 <span className="text-xs font-mono text-slate-200">{vid}</span>
-                <span className="text-xs font-mono font-bold text-emerald-400">ASSIGNED ✓</span>
+                <span className="text-xs font-mono font-bold text-[#2DD4BF]">ASSIGNED ✓</span>
               </motion.div>
             ))}
-            <div className="mt-2 pt-2 text-center text-xs font-mono font-bold text-emerald-300">
+            <div className="mt-2 pt-2 text-center text-xs font-mono font-bold text-[#2DD4BF]">
               7 / 7 RESCUE VEHICLES DISPATCHED
             </div>
           </motion.div>
@@ -330,12 +330,12 @@ export const DispatchPanel: React.FC = () => {
       {/* Driver mobile notification */}
       <div className="rounded-2xl p-4 backdrop-blur-xl shadow-xl"
         style={{
-          background: 'rgba(18, 24, 34, 0.92)',
-          border: '1px solid rgba(220, 195, 165, 0.16)',
+          background: 'rgba(11, 31, 22, 0.94)',
+          border: '1px solid rgba(45, 212, 191, 0.25)',
         }}>
-        <div className="text-[10px] font-mono font-bold text-amber-400 mb-2 tracking-widest uppercase flex items-center justify-between">
+        <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-2 tracking-widest uppercase flex items-center justify-between">
           <span>DRIVER DISPATCH TELEMETRY</span>
-          <span className="text-emerald-400 font-mono">MISSION A27</span>
+          <span className="text-[#2DD4BF] font-mono">MISSION A27</span>
         </div>
         {[
           ['Assigned Driver', 'R. Das (Livestock Specialist)'],
@@ -350,7 +350,7 @@ export const DispatchPanel: React.FC = () => {
             <span className="font-semibold text-slate-100">{value}</span>
           </div>
         ))}
-        <div className="mt-3 py-2 text-center text-xs font-mono font-bold text-emerald-300 rounded-xl bg-emerald-950/40 border border-emerald-500/30">
+        <div className="mt-3 py-2 text-center text-xs font-mono font-bold text-[#2DD4BF] rounded-xl bg-[#0F3E2E]/80 border border-[#2DD4BF]/40">
           {driverAck ? '✓ DRIVER ACKNOWLEDGED & EN ROUTE' : 'AWAITING DRIVER HANDSHAKE...'}
         </div>
       </div>
@@ -363,20 +363,20 @@ export const DispatchPanel: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="rounded-2xl p-4 backdrop-blur-xl shadow-xl"
             style={{
-              background: 'rgba(18, 24, 34, 0.92)',
-              border: '1px solid rgba(220, 195, 165, 0.16)',
+              background: 'rgba(11, 31, 22, 0.94)',
+              border: '1px solid rgba(45, 212, 191, 0.25)',
             }}
           >
-            <div className="text-[10px] font-mono font-bold text-amber-400 mb-1 tracking-widest uppercase">
+            <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-1 tracking-widest uppercase">
               CITIZEN SOS REASSURANCE FEED
             </div>
             <div className="text-xs text-slate-300 mb-2 font-sans">
               Automated SMS broadcast in English and Odia to Manijanga residents:
             </div>
-            <div className="p-2.5 rounded-xl bg-slate-900/80 border border-white/5 font-mono text-[11px] text-slate-200 leading-relaxed">
+            <div className="p-2.5 rounded-xl bg-[#07140E] border border-white/5 font-mono text-[11px] text-slate-200 leading-relaxed">
               &quot;SAHACHAR ALERT: Bus B04 arriving in 8 min for family evacuation to Shelter H2. Truck T07 arriving simultaneously for your 6 cattle to Go-Sadan C1. Do not leave your animals.&quot;
             </div>
-            <div className="flex justify-between mt-2 text-[10px] font-mono text-emerald-400">
+            <div className="flex justify-between mt-2 text-[10px] font-mono text-[#2DD4BF]">
               <span>SMS BROADCAST SENT ✓</span>
               <span>42 HOUSEHOLDS DELIVERED ✓</span>
             </div>
@@ -391,12 +391,12 @@ export const DispatchPanel: React.FC = () => {
             animate={{ opacity: 1 }}
             whileTap={{ scale: 0.98 }}
             onClick={startEvacuation}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-mono font-bold transition-all shadow-xl cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-mono font-bold transition-all shadow-xl cursor-pointer uppercase tracking-wider"
             style={{
-              background: 'linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(37, 99, 235, 0.9) 100%)',
-              color: '#FAF8F5',
-              border: '1px solid rgba(56, 189, 248, 0.5)',
-              boxShadow: '0 4px 25px rgba(2, 132, 199, 0.35)',
+              background: 'linear-gradient(135deg, #E05A1B 0%, #EA580C 100%)',
+              color: '#FFFFFF',
+              border: '1px solid #F97316',
+              boxShadow: '0 4px 25px rgba(224, 90, 27, 0.45)',
             }}
           >
             ▶ LAUNCH EVACUATION CONVOY IN TRANSIT

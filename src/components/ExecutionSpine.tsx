@@ -61,8 +61,8 @@ export const ExecutionSpine: React.FC = () => {
   return (
     <div className="relative flex items-center gap-0 px-6 py-2.5 shadow-lg z-10 backdrop-blur-md"
       style={{
-        borderBottom: '1px solid rgba(220, 195, 165, 0.12)',
-        background: 'rgba(12, 16, 24, 0.95)'
+        borderBottom: '1px solid rgba(45, 212, 191, 0.22)',
+        background: 'rgba(11, 31, 22, 0.98)'
       }}>
       {/* Breach Disruption Alert banner */}
       <AnimatePresence>
@@ -71,7 +71,7 @@ export const ExecutionSpine: React.FC = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0 }}
-            className="absolute left-4 flex items-center gap-2 px-3 py-1 rounded-xl text-xs font-mono font-black bg-red-950/90 border border-red-500 text-red-200 shadow-[0_0_20px_rgba(224,72,56,0.6)] z-20"
+            className="absolute left-4 flex items-center gap-2 px-3 py-1 rounded-xl text-xs font-mono font-black bg-red-950/90 border border-red-500 text-red-200 shadow-[0_0_20px_rgba(220,38,38,0.6)] z-20"
           >
             <AlertTriangle size={14} className="animate-pulse text-red-400" />
             <span>PAIKA BRIDGE 4 BREACHED • ADAPTIVE REROUTE ACTIVE</span>
@@ -92,9 +92,9 @@ export const ExecutionSpine: React.FC = () => {
                   className="h-[2px] w-6 lg:w-9 flex-shrink-0 transition-all duration-500"
                   style={{
                     background: status === 'done' || (idx > 0 && getStageStatus(stages[idx - 1].id, demoStage) === 'done')
-                      ? 'linear-gradient(90deg, #16a34a, #2563eb)'
+                      ? 'linear-gradient(90deg, #134E35, #2DD4BF)'
                       : 'rgba(255, 255, 255, 0.08)',
-                    boxShadow: status === 'done' ? '0 0 6px rgba(22, 163, 74, 0.4)' : 'none'
+                    boxShadow: status === 'done' ? '0 0 8px rgba(45, 212, 191, 0.5)' : 'none'
                   }}
                 />
               )}
@@ -111,15 +111,15 @@ export const ExecutionSpine: React.FC = () => {
                     width: status === 'active' ? 30 : 24,
                     height: status === 'active' ? 30 : 24,
                     background:
-                      status === 'done' ? 'rgba(22, 163, 74, 0.25)' :
-                        status === 'active' ? (isReplan && isDisrupted ? 'rgba(224, 72, 56, 0.3)' : 'rgba(217, 119, 6, 0.3)') :
-                          'rgba(24, 31, 44, 0.8)',
-                    border: `1.5px solid ${status === 'done' ? '#16a34a' :
-                      status === 'active' ? (isReplan && isDisrupted ? '#e04838' : '#d97706') :
+                      status === 'done' ? 'rgba(45, 212, 191, 0.22)' :
+                        status === 'active' ? (isReplan && isDisrupted ? 'rgba(220, 38, 38, 0.35)' : 'rgba(224, 90, 27, 0.35)') :
+                          'rgba(7, 20, 14, 0.85)',
+                    border: `1.5px solid ${status === 'done' ? '#2DD4BF' :
+                      status === 'active' ? (isReplan && isDisrupted ? '#ef4444' : '#E05A1B') :
                         'rgba(255, 255, 255, 0.12)'}`,
                     boxShadow: status === 'active' ?
-                      (isReplan && isDisrupted ? '0 0 16px rgba(224,72,56,0.7)' : '0 0 16px rgba(217,119,6,0.6)') :
-                      status === 'done' ? '0 0 8px rgba(22,163,74,0.3)' : 'none',
+                      (isReplan && isDisrupted ? '0 0 16px rgba(220,38,38,0.7)' : '0 0 16px rgba(224,90,27,0.7)') :
+                      status === 'done' ? '0 0 8px rgba(45,212,191,0.3)' : 'none',
                   }}
                 >
                   {status === 'done' ? (
@@ -128,15 +128,15 @@ export const ExecutionSpine: React.FC = () => {
                       animate={{ scale: 1 }}
                       transition={{ type: 'spring', stiffness: 500 }}
                     >
-                      <CheckCircle size={13} color="#22c55e" />
+                      <CheckCircle size={13} color="#2DD4BF" />
                     </motion.div>
                   ) : status === 'active' && isReplan && isDisrupted ? (
-                    <RotateCcw size={12} color="#e04838" className="animate-spin" style={{ animationDuration: '2s' }} />
+                    <RotateCcw size={12} color="#ef4444" className="animate-spin" style={{ animationDuration: '2s' }} />
                   ) : (
                     <span style={{
                       fontSize: 10,
                       fontWeight: 800,
-                      color: status === 'active' ? '#FAF8F5' : '#94A3B8',
+                      color: status === 'active' ? '#FFFFFF' : '#94A3B8',
                       fontFamily: 'JetBrains Mono, monospace',
                     }}>
                       {stage.id}
@@ -148,11 +148,11 @@ export const ExecutionSpine: React.FC = () => {
                   fontWeight: 700,
                   letterSpacing: '0.07em',
                   color:
-                    status === 'done' ? '#4ade80' :
-                      status === 'active' ? (isReplan && isDisrupted ? '#f87171' : '#fbbf24') :
+                    status === 'done' ? '#2DD4BF' :
+                      status === 'active' ? (isReplan && isDisrupted ? '#f87171' : '#E05A1B') :
                         '#64748b',
                   transition: 'color 0.3s',
-                  textShadow: status === 'active' ? '0 0 10px rgba(217,119,6,0.5)' : 'none'
+                  textShadow: status === 'active' ? '0 0 10px rgba(224,90,27,0.5)' : 'none'
                 }}>
                   {stage.label}
                 </span>
@@ -171,17 +171,17 @@ export const ExecutionSpine: React.FC = () => {
           className="text-[11px] font-mono font-bold tracking-wider px-3 py-1 rounded-xl shadow-md"
           style={{
             background: demoStage === 'NORMAL' ? 'rgba(100, 116, 139, 0.15)' :
-              demoStage === 'COMPLETED' ? 'rgba(22, 163, 74, 0.2)' :
-                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(224, 72, 56, 0.25)' :
-                  'rgba(217, 119, 6, 0.2)',
+              demoStage === 'COMPLETED' ? 'rgba(15, 62, 46, 0.8)' :
+                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(220, 38, 38, 0.25)' :
+                  'rgba(224, 90, 27, 0.25)',
             color: demoStage === 'NORMAL' ? '#94a3b8' :
-              demoStage === 'COMPLETED' ? '#4ade80' :
+              demoStage === 'COMPLETED' ? '#2DD4BF' :
                 demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? '#fca5a5' :
-                  '#fbbf24',
+                  '#E05A1B',
             border: `1px solid ${demoStage === 'NORMAL' ? 'rgba(255,255,255,0.1)' :
-              demoStage === 'COMPLETED' ? 'rgba(22, 163, 74, 0.5)' :
-                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(224, 72, 56, 0.5)' :
-                  'rgba(217, 119, 6, 0.5)'}`,
+              demoStage === 'COMPLETED' ? 'rgba(45, 212, 191, 0.5)' :
+                demoStage === 'DISRUPTION' || demoStage === 'RESOURCE_GAP' ? 'rgba(220, 38, 38, 0.5)' :
+                  'rgba(224, 90, 27, 0.5)'}`,
           }}
         >
           {demoStage === 'NORMAL' ? 'STANDBY MONITORING' : demoStage.replace(/_/g, ' ')}

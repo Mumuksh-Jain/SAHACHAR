@@ -5,33 +5,31 @@
 @tailwind utilities;
 
 :root {
-  /* Foundations: Deep Forest & Storm Slate with rural earth undertones */
-  --bg-base: #0A130E;
-  --bg-surface: #101E17;
-  --bg-elevated: #162820;
-  --bg-surface-frosted: rgba(16, 30, 23, 0.85);
-  --bg-border: rgba(224, 165, 59, 0.18);
-  --bg-hover: #1D362A;
+  /* Foundations: Deep Forest Pine & Slate Command Backdrop */
+  --bg-base: #07140E;
+  --bg-surface: #0B1F16;
+  --bg-elevated: #0F2C20;
+  --bg-surface-frosted: rgba(11, 31, 22, 0.94);
+  --bg-border: rgba(45, 212, 191, 0.22);
+  --bg-hover: #164E3D;
 
-  /* Official SAHACHAR Identity Palette */
-  --color-forest-green: #1E4B32;   /* Togetherness, Sheltering Hand */
-  --color-sage: #6A8F3A;           /* Protection & Companion Flora */
-  --color-saffron: #E0A53B;        /* Hope, Resilience, Sunrise over Shelter */
-  --color-saffron-orange: #EA580C; /* High Priority Urgency */
-  --color-sand: #F2E6D3;           /* Warm Earth & Parchment */
-  --color-mud-earth: #8B5A2B;      /* Rural PMGSY Embankment & Flood Bund */
-  --color-storm-slate: #1D3C6A;    /* Monsoonal Flood Cloud */
-  
-  /* Emergency Status Colors */
-  --color-terracotta: #DC2626;     /* Bridge Submergence & Cutoff Danger */
-  --color-sanctuary: #16A34A;      /* Safe Arrival at Go-Sadan & Shelter */
-  --color-marine: #0284C7;         /* Actionable Lifeline Corridor */
+  /* Official Smart India Hackathon 2025 SAHACHAR-DRR Palette */
+  --color-forest: #0F3E2E;         /* Institutional Forest Resilience Green */
+  --color-pine: #134E35;           /* Deep Sanctuary Green */
+  --color-orange: #E05A1B;         /* High-Visibility Rescue Action Orange */
+  --color-orange-glow: #F97316;    /* Emergency Alert Glow */
+  --color-sage: #E8F3ED;           /* Soft Botanical Sage Pill Tint */
+  --color-mint: #2DD4BF;           /* Smarter Response Mint Telemetry */
+  --color-pure-white: #FFFFFF;     /* Pure High-Contrast White */
+  --color-ice-white: #F8FAFC;      /* Clean Panel White/Slate */
+  --color-saffron: #F59E0B;        /* Urgency Warning Amber */
+  --color-terracotta: #DC2626;     /* Bridge Breach & Submergence Danger */
 
   /* High Readability Typography */
-  --text-ivory: #FAF8F5;
-  --text-parchment: #F2E6D3;
-  --text-muted: #A3B899;
-  --text-subtle: #657D68;
+  --text-ivory: #FFFFFF;
+  --text-parchment: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-subtle: #64748B;
 }
 
 * {
@@ -40,21 +38,26 @@
   padding: 0;
 }
 
-html, body, #root {
-  height: 100%;
+html, body {
+  min-height: 100%;
   width: 100%;
-  overflow: hidden;
   background: var(--bg-base);
   color: var(--text-parchment);
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
+#root {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 /* Custom Scrollbars */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: rgba(224, 165, 59, 0.22); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(224, 165, 59, 0.4); }
+::-webkit-scrollbar-thumb { background: rgba(45, 212, 191, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(224, 90, 27, 0.6); }
 
 /* MapLibre Controls Overhaul */
 .maplibregl-map { font-family: 'Inter', sans-serif !important; }
@@ -66,7 +69,7 @@ html, body, #root {
 }
 .maplibregl-ctrl-group button {
   background: transparent !important;
-  color: #F2E6D3 !important;
+  color: #F8FAFC !important;
   border: none !important;
 }
 .maplibregl-ctrl-group button:hover {
@@ -79,36 +82,44 @@ html, body, #root {
   .text-mono { font-family: 'JetBrains Mono', monospace; }
   
   .crisis-card {
-    background: rgba(16, 30, 23, 0.88);
+    background: rgba(11, 31, 22, 0.94);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(224, 165, 59, 0.18);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(45, 212, 191, 0.22);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .crisis-card-white {
+    background: #FFFFFF;
+    color: #0F1E16;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 30px rgba(7, 20, 14, 0.15);
   }
 
   .crisis-card-danger {
-    background: rgba(45, 14, 16, 0.92);
+    background: rgba(45, 14, 16, 0.94);
     backdrop-filter: blur(20px);
     border: 1.5px solid rgba(220, 38, 38, 0.6);
     box-shadow: 0 0 30px rgba(220, 38, 38, 0.25);
   }
 
   .crisis-card-sanctuary {
-    background: rgba(15, 38, 24, 0.92);
+    background: rgba(15, 46, 33, 0.95);
     backdrop-filter: blur(20px);
-    border: 1.5px solid rgba(106, 143, 58, 0.5);
-    box-shadow: 0 0 30px rgba(106, 143, 58, 0.25);
+    border: 1.5px solid rgba(45, 212, 191, 0.4);
+    box-shadow: 0 0 30px rgba(15, 62, 46, 0.35);
   }
 
-  .sanctuary-border { border-color: rgba(106, 143, 58, 0.4); }
+  .sanctuary-border { border-color: rgba(45, 212, 191, 0.4); }
   .danger-border { border-color: rgba(220, 38, 38, 0.4); }
-  .amber-border { border-color: rgba(224, 165, 59, 0.4); }
+  .amber-border { border-color: rgba(245, 158, 11, 0.4); }
+  .orange-border { border-color: rgba(224, 90, 27, 0.4); }
 
-  .status-available { color: #4ADE80; }
-  .status-risk { color: #E0A53B; }
+  .status-available { color: #2DD4BF; }
+  .status-risk { color: #F59E0B; }
   .status-critical { color: #DC2626; }
   .status-blocked { color: #EF4444; }
-  .status-complete { color: #16A34A; }
+  .status-complete { color: #4ADE80; }
 
   .badge-danger {
     background: rgba(220, 38, 38, 0.16);
@@ -116,19 +127,19 @@ html, body, #root {
     border: 1px solid rgba(220, 38, 38, 0.4);
   }
   .badge-warning {
-    background: rgba(224, 165, 59, 0.16);
+    background: rgba(245, 158, 11, 0.16);
     color: #FBBF24;
-    border: 1px solid rgba(224, 165, 59, 0.4);
+    border: 1px solid rgba(245, 158, 11, 0.4);
   }
   .badge-safe {
-    background: rgba(106, 143, 58, 0.16);
-    color: #86EFAC;
-    border: 1px solid rgba(106, 143, 58, 0.4);
+    background: rgba(15, 62, 46, 0.45);
+    color: #E8F3ED;
+    border: 1px solid rgba(45, 212, 191, 0.4);
   }
   .badge-action {
-    background: rgba(2, 132, 199, 0.16);
-    color: #38BDF8;
-    border: 1px solid rgba(2, 132, 199, 0.4);
+    background: rgba(224, 90, 27, 0.18);
+    color: #E05A1B;
+    border: 1px solid rgba(224, 90, 27, 0.45);
   }
 }
 

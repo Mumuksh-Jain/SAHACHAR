@@ -44,6 +44,8 @@ export interface Settlement {
   bedriddenElderly?: number;
   kutchaHouses?: number;
   elevationMeters?: number;
+  roadType?: 'kutcha' | 'pucca' | string;
+  riverProximityKm?: number;
 }
 
 export interface RiverGauge {
@@ -57,6 +59,8 @@ export interface RiverGauge {
   warningLevel: number;
   trend: 'RISING_FAST' | 'RISING' | 'STEADY' | 'RECEDING';
   dischargeCusecs: string;
+  currentLevelM?: number;
+  status?: string;
 }
 
 export interface Shelter {
@@ -94,6 +98,7 @@ export interface Vehicle {
   progress?: number; // 0–100 for telemetry
   speed?: number; // km/h display
   animalCompat?: string[];
+  assignedLocation?: string;
 }
 
 export interface Road {
@@ -103,6 +108,7 @@ export interface Road {
   accessUntil?: string;
   critical: boolean;
   coordinates: [number, number][];
+  isElevated?: boolean;
 }
 
 export interface Route {
@@ -154,6 +160,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Pravati Swain (ASHA #41)',
     pregnantMothers: 3, bedriddenElderly: 4, kutchaHouses: 28, elevationMeters: 2.8,
+    roadType: 'kutcha', riverProximityKm: 0.4,
   },
   {
     id: 'S02', name: 'Nimakana', odiaName: 'ନିମକଣା',
@@ -165,6 +172,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Minati Sethi (ASHA #19)',
     pregnantMothers: 2, bedriddenElderly: 2, kutchaHouses: 19, elevationMeters: 3.1,
+    roadType: 'kutcha', riverProximityKm: 0.6,
   },
   {
     id: 'S03', name: 'Jagannathpur', odiaName: 'ଜଗନ୍ନାଥପୁର',
@@ -176,6 +184,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Kabita Das (ASHA #08)',
     pregnantMothers: 1, bedriddenElderly: 3, kutchaHouses: 14, elevationMeters: 3.8,
+    roadType: 'pucca', riverProximityKm: 1.2,
   },
   {
     id: 'S04', name: 'Tarajanga', odiaName: 'ତାରାଜଙ୍ଗା',
@@ -187,6 +196,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Sujata Mohanty (ASHA #14)',
     pregnantMothers: 2, bedriddenElderly: 3, kutchaHouses: 22, elevationMeters: 2.9,
+    roadType: 'kutcha', riverProximityKm: 0.5,
   },
   {
     id: 'S05', name: 'Kanimul', odiaName: 'କାନିମୂଳ',
@@ -198,6 +208,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Anita Behera (ASHA #32)',
     pregnantMothers: 1, bedriddenElderly: 1, kutchaHouses: 11, elevationMeters: 4.5,
+    roadType: 'pucca', riverProximityKm: 1.8,
   },
   {
     id: 'S06', name: 'Tulanga', odiaName: 'ତୁଳଙ୍ଗା',
@@ -209,6 +220,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Rashmita Barik (ASHA #27)',
     pregnantMothers: 1, bedriddenElderly: 2, kutchaHouses: 16, elevationMeters: 3.5,
+    roadType: 'pucca', riverProximityKm: 1.1,
   },
   {
     id: 'S07', name: 'Bodhei', odiaName: 'ବୋଧେଇ',
@@ -220,6 +232,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Mamata Nayak (ASHA #05)',
     pregnantMothers: 1, bedriddenElderly: 1, kutchaHouses: 9, elevationMeters: 4.2,
+    roadType: 'pucca', riverProximityKm: 2.1,
   },
   {
     id: 'S08', name: 'Krushnanandapur', odiaName: 'କୃଷ୍ଣାନନ୍ଦପୁର',
@@ -231,6 +244,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Sabita Rout (ASHA #11)',
     pregnantMothers: 1, bedriddenElderly: 2, kutchaHouses: 15, elevationMeters: 3.6,
+    roadType: 'pucca', riverProximityKm: 1.4,
   },
   {
     id: 'S09', name: 'Ibrisingh', odiaName: 'ଇବ୍ରିସିଂହ',
@@ -242,6 +256,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Deepa Mallick (ASHA #16)',
     pregnantMothers: 1, bedriddenElderly: 1, kutchaHouses: 12, elevationMeters: 3.4,
+    roadType: 'pucca', riverProximityKm: 1.6,
   },
   {
     id: 'S10', name: 'Kanakpur', odiaName: 'କନକପୁର',
@@ -253,6 +268,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Padma Jena (ASHA #21)',
     pregnantMothers: 0, bedriddenElderly: 1, kutchaHouses: 8, elevationMeters: 4.0,
+    roadType: 'pucca', riverProximityKm: 2.0,
   },
   {
     id: 'S11', name: 'Gopalpur', odiaName: 'ଗୋପାଳପୁର',
@@ -264,6 +280,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Laxmi Patra (ASHA #03)',
     pregnantMothers: 1, bedriddenElderly: 1, kutchaHouses: 7, elevationMeters: 4.7,
+    roadType: 'pucca', riverProximityKm: 2.4,
   },
   {
     id: 'S12', name: 'Biritol', odiaName: 'ବିରିତୋଳ',
@@ -275,6 +292,7 @@ export const initialSettlements: Settlement[] = [
     humanEvacuation: 0, animalEvacuation: 0,
     ashaWorker: 'Jharna Sahoo (ASHA #18)',
     pregnantMothers: 0, bedriddenElderly: 1, kutchaHouses: 6, elevationMeters: 4.8,
+    roadType: 'pucca', riverProximityKm: 2.2,
   },
 ];
 
@@ -311,12 +329,14 @@ export const initialVehicles: Vehicle[] = [
     coordinates: [86.250, 20.280], capacity: 42,
     status: 'AVAILABLE', driver: 'S. Behera',
     progress: 0, speed: 0,
+    assignedLocation: 'Tirtol HQ Staging',
   },
   {
     id: 'B06', type: 'BUS', label: 'Human Evacuation Bus',
     coordinates: [86.258, 20.281], capacity: 36,
     status: 'AVAILABLE', driver: 'A. Nayak',
     progress: 0, speed: 0,
+    assignedLocation: 'Manijanga Station',
   },
   {
     id: 'T07', type: 'LIVESTOCK_CARRIER', label: 'Livestock Carrier',
@@ -325,6 +345,7 @@ export const initialVehicles: Vehicle[] = [
     status: 'AVAILABLE', driver: 'R. Das',
     animalCompat: ['Cattle', 'Goats'],
     progress: 0, speed: 0,
+    assignedLocation: 'Relief Staging Depot',
   },
   {
     id: 'T09', type: 'LIVESTOCK_CARRIER', label: 'Livestock Carrier',
@@ -333,6 +354,7 @@ export const initialVehicles: Vehicle[] = [
     status: 'AVAILABLE', driver: 'P. Sahoo',
     animalCompat: ['Cattle', 'Goats'],
     progress: 0, speed: 0,
+    assignedLocation: 'Tirtol HQ Staging',
   },
   {
     id: 'T11', type: 'LIVESTOCK_CARRIER', label: 'District Reserve Carrier',
@@ -341,24 +363,28 @@ export const initialVehicles: Vehicle[] = [
     status: 'RESERVE', driver: 'M. Jena',
     animalCompat: ['Cattle', 'Goats', 'Poultry'],
     progress: 0, speed: 0,
+    assignedLocation: 'District Reserve Yard',
   },
   {
     id: 'A02', type: 'AMBULANCE', label: 'Medical Response',
     coordinates: [86.239, 20.281],
     status: 'RESERVED', driver: 'K. Rout',
     progress: 0, speed: 0,
+    assignedLocation: 'CHC Tirtol Standby',
   },
   {
     id: 'M01', type: 'MINIBUS', label: 'Assisted Evacuation',
     coordinates: [86.260, 20.278], capacity: 20,
     status: 'AVAILABLE', driver: 'B. Swain',
     progress: 0, speed: 0,
+    assignedLocation: 'Tirtol Transit Post',
   },
   {
     id: 'J03', type: 'JEEP', label: 'Field Verification',
     coordinates: [86.243, 20.279],
     status: 'AVAILABLE', driver: 'D. Mohanty',
     progress: 0, speed: 0,
+    assignedLocation: 'Field Command Base',
   },
 ];
 
@@ -367,17 +393,17 @@ export const initialVehicles: Vehicle[] = [
 export const initialRoads: Road[] = [
   {
     id: 'EC1', name: 'Tartol Bridge',
-    status: 'OPEN', accessUntil: '14:20', critical: true,
+    status: 'OPEN', accessUntil: '14:20', critical: true, isElevated: true,
     coordinates: [[86.228, 20.291], [86.230, 20.275]],
   },
   {
     id: 'EC2', name: 'Manijanga Connector Bridge',
-    status: 'OPEN', accessUntil: '14:05', critical: true,
+    status: 'OPEN', accessUntil: '14:05', critical: true, isElevated: true,
     coordinates: [[86.263, 20.316], [86.265, 20.299]],
   },
   {
     id: 'EC3', name: 'Tarajanga Overpass',
-    status: 'OPEN', accessUntil: '13:50', critical: true,
+    status: 'OPEN', accessUntil: '13:50', critical: true, isElevated: true,
     coordinates: [[86.282, 20.293], [86.280, 20.278]],
   },
   {
@@ -456,6 +482,8 @@ export const initialRiverGauges: RiverGauge[] = [
     river: 'Paika Distributary',
     coordinates: [86.255, 20.312],
     waterLevel: 9.35,
+    currentLevelM: 9.35,
+    status: 'RISING FAST',
     dangerLevel: 8.90,
     warningLevel: 8.20,
     trend: 'RISING_FAST',
@@ -468,6 +496,8 @@ export const initialRiverGauges: RiverGauge[] = [
     river: 'Mahanadi Main Stem',
     coordinates: [86.235, 20.345],
     waterLevel: 12.15,
+    currentLevelM: 12.15,
+    status: 'RISING FAST',
     dangerLevel: 11.76,
     warningLevel: 10.80,
     trend: 'RISING_FAST',
@@ -480,6 +510,8 @@ export const initialRiverGauges: RiverGauge[] = [
     river: 'Chitrotpala Delta Channel',
     coordinates: [86.288, 20.285],
     waterLevel: 7.80,
+    currentLevelM: 7.80,
+    status: 'RISING',
     dangerLevel: 7.95,
     warningLevel: 7.30,
     trend: 'RISING',
