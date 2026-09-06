@@ -128,15 +128,7 @@ export const BootSequence: React.FC = () => {
            color: '#F8FAFC',
            fontFamily: 'Inter, system-ui, sans-serif'
          }}>
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-40 mix-blend-screen"
-        src="/BOOTING PAGE.mp4"
-      />
+
 
       {/* Dynamic scanline and grid overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20 z-[1]"
