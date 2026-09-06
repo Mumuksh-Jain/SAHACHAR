@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Cinzel:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Foundations: Deep Forest & Storm Slate with rural earth undertones */
+  --bg-base: #0A130E;
+  --bg-surface: #101E17;
+  --bg-elevated: #162820;
+  --bg-surface-frosted: rgba(16, 30, 23, 0.85);
+  --bg-border: rgba(224, 165, 59, 0.18);
+  --bg-hover: #1D362A;
+
+  /* Official SAHACHAR Identity Palette */
+  --color-forest-green: #1E4B32;   /* Togetherness, Sheltering Hand */
+  --color-sage: #6A8F3A;           /* Protection & Companion Flora */
+  --color-saffron: #E0A53B;        /* Hope, Resilience, Sunrise over Shelter */
+  --color-saffron-orange: #EA580C; /* High Priority Urgency */
+  --color-sand: #F2E6D3;           /* Warm Earth & Parchment */
+  --color-mud-earth: #8B5A2B;      /* Rural PMGSY Embankment & Flood Bund */
+  --color-storm-slate: #1D3C6A;    /* Monsoonal Flood Cloud */
+  
+  /* Emergency Status Colors */
+  --color-terracotta: #DC2626;     /* Bridge Submergence & Cutoff Danger */
+  --color-sanctuary: #16A34A;      /* Safe Arrival at Go-Sadan & Shelter */
+  --color-marine: #0284C7;         /* Actionable Lifeline Corridor */
+
+  /* High Readability Typography */
+  --text-ivory: #FAF8F5;
+  --text-parchment: #F2E6D3;
+  --text-muted: #A3B899;
+  --text-subtle: #657D68;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-base);
+  color: var(--text-parchment);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: rgba(224, 165, 59, 0.22); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(224, 165, 59, 0.4); }
+
+/* MapLibre Controls Overhaul */
+.maplibregl-map { font-family: 'Inter', sans-serif !important; }
+.maplibregl-ctrl-group {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--bg-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6) !important;
+}
+.maplibregl-ctrl-group button {
+  background: transparent !important;
+  color: #F2E6D3 !important;
+  border: none !important;
+}
+.maplibregl-ctrl-group button:hover {
+  background: var(--bg-hover) !important;
+}
+.maplibregl-ctrl-attrib, .maplibregl-ctrl-logo { display: none !important; }
+
+/* Custom Utilities */
+@layer utilities {
+  .text-mono { font-family: 'JetBrains Mono', monospace; }
+  
+  .crisis-card {
+    background: rgba(16, 30, 23, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(224, 165, 59, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  }
+
+  .crisis-card-danger {
+    background: rgba(45, 14, 16, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.25);
+  }
+
+  .crisis-card-sanctuary {
+    background: rgba(15, 38, 24, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(106, 143, 58, 0.5);
+    box-shadow: 0 0 30px rgba(106, 143, 58, 0.25);
+  }
+
+  .sanctuary-border { border-color: rgba(106, 143, 58, 0.4); }
+  .danger-border { border-color: rgba(220, 38, 38, 0.4); }
+  .amber-border { border-color: rgba(224, 165, 59, 0.4); }
+
+  .status-available { color: #4ADE80; }
+  .status-risk { color: #E0A53B; }
+  .status-critical { color: #DC2626; }
+  .status-blocked { color: #EF4444; }
+  .status-complete { color: #16A34A; }
+
+  .badge-danger {
+    background: rgba(220, 38, 38, 0.16);
+    color: #F87171;
+    border: 1px solid rgba(220, 38, 38, 0.4);
+  }
+  .badge-warning {
+    background: rgba(224, 165, 59, 0.16);
+    color: #FBBF24;
+    border: 1px solid rgba(224, 165, 59, 0.4);
+  }
+  .badge-safe {
+    background: rgba(106, 143, 58, 0.16);
+    color: #86EFAC;
+    border: 1px solid rgba(106, 143, 58, 0.4);
+  }
+  .badge-action {
+    background: rgba(2, 132, 199, 0.16);
+    color: #38BDF8;
+    border: 1px solid rgba(2, 132, 199, 0.4);
+  }
+}
+
+/* ── Fullscreen Emergency Screen Red Alert Pulse ── */
+@keyframes emergencyAlertStrobe {
+  0%, 100% {
+    box-shadow: inset 0 0 35px rgba(220, 38, 38, 0.4), inset 0 0 10px rgba(220, 38, 38, 0.6);
+    border-color: rgba(220, 38, 38, 0.7);
+  }
+  50% {
+    box-shadow: inset 0 0 100px rgba(220, 38, 38, 0.8), inset 0 0 30px rgba(220, 38, 38, 0.9);
+    border-color: rgba(255, 68, 68, 1);
+  }
+}
+
+.emergency-screen-alert {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  animation: emergencyAlertStrobe 1.4s infinite ease-in-out;
+  border: 4px solid #DC2626;
+}
+
+/* ── Mission Completed Confetti & Celebration Pop ── */
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
+}
+
+.confetti-particle {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  z-index: 110;
+  animation: confettiFall 3.5s linear forwards;
+}
+
+/* ── Directional Flow Chevron for Truck Movement ── */
+@keyframes chevronFlow {
+  0% { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animated-route-flow {
+  stroke-dasharray: 6, 6;
+  animation: chevronFlow 0.8s linear infinite;
+}
+
+/* ── Audio Pulse & Micro-Interactions ── */
+@keyframes radarRing {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.radar-ping {
+  position: relative;
+}
+.radar-ping::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid #E0A53B;
+  animation: radarRing 1.8s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
+}

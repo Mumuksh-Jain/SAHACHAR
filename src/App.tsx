@@ -1,0 +1,77 @@
+import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useDemoStore } from './store/useDemoStore';
+import { MissionControl } from './pages/MissionControl';
+import { DriverView, CitizenView, FieldView } from './pages/MobileViews';
+import { BootSequence } from './components/BootSequence';
+
+function App() {
+  const { appView, isBooting } = useDemoStore();
+
+  return (
+    <>
+      <AnimatePresence>
+        {isBooting && (
+          <motion.div
+            key="boot_sequence"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0, filter: 'blur(10px)', scale: 1.02 }}
+            transition={{ duration: 0.6, ease: 'easeInOut' }}
+            className="fixed inset-0 z-[9999]"
+          >
+            <BootSequence />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence mode="wait">
+        {appView === 'mission_control' && (
+          <motion.div
+            key="mission_control"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            style={{ height: '100vh', width: '100vw' }}
+          >
+            <MissionControl />
+          </motion.div>
+        )}
+      {appView === 'driver' && (
+        <motion.div
+          key="driver"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          style={{ height: '100vh', width: '100vw' }}
+        >
+          <DriverView />
+        </motion.div>
+      )}
+      {appView === 'citizen' && (
+        <motion.div
+          key="citizen"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 100 }}
+          style={{ height: '100vh', width: '100vw' }}
+        >
+          <CitizenView />
+        </motion.div>
+      )}
+        {appView === 'field' && (
+          <motion.div
+            key="field"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+            style={{ height: '100vh', width: '100vw' }}
+          >
+            <FieldView />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+export default App;
