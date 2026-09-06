@@ -4,18 +4,59 @@ import { useDemoStore } from '../store/useDemoStore';
 
 export const BootSequence: React.FC = () => {
   const { setIsBooting } = useDemoStore();
-  const [isMuted, setIsMuted] = useState(true);
+  // Default unmuted as requested by user
+  const [isMuted, setIsMuted] = useState(false);
   const [videoSrc, setVideoSrc] = useState('/booting video.mp4');
   const [progress, setProgress] = useState(0);
+  const [needsUserClickForAudio, setNeedsUserClickForAudio] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.warn('Boot video autoplay notice:', err);
-      });
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Start with audio enabled by default
+    video.muted = false;
+    const playPromise = video.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Unmuted autoplay succeeded
+          setIsMuted(false);
+          setNeedsUserClickForAudio(false);
+        })
+        .catch((err) => {
+          console.warn('Unmuted autoplay restricted by browser; starting muted with click-to-unmute listener:', err);
+          // Fallback to muted playback so video starts playing immediately
+          video.muted = true;
+          setIsMuted(true);
+          setNeedsUserClickForAudio(true);
+          video.play().catch(() => {});
+        });
     }
   }, [videoSrc]);
+
+  // Global one-time listener to unmute on first user click/tap anywhere on page if browser restricted unmuted autoplay
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      if (videoRef.current && videoRef.current.muted) {
+        videoRef.current.muted = false;
+        setIsMuted(false);
+        setNeedsUserClickForAudio(false);
+      }
+    };
+
+    window.addEventListener('click', handleFirstInteraction, { once: true });
+    window.addEventListener('keydown', handleFirstInteraction, { once: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+    };
+  }, []);
 
   const handleTimeUpdate = () => {
     if (videoRef.current && videoRef.current.duration) {
@@ -28,14 +69,19 @@ export const BootSequence: React.FC = () => {
     setIsBooting(false);
   };
 
-  const handleSkip = () => {
+  const handleSkip = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsBooting(false);
   };
 
-  const toggleMute = () => {
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
       setIsMuted(videoRef.current.muted);
+      if (!videoRef.current.muted) {
+        setNeedsUserClickForAudio(false);
+      }
     }
   };
 
@@ -52,7 +98,16 @@ export const BootSequence: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden select-none">
+    <div
+      onClick={() => {
+        if (videoRef.current && videoRef.current.muted) {
+          videoRef.current.muted = false;
+          setIsMuted(false);
+          setNeedsUserClickForAudio(false);
+        }
+      }}
+      className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden select-none cursor-pointer"
+    >
       {/* Full-Screen Boot Video */}
       <video
         ref={videoRef}
@@ -77,7 +132,7 @@ export const BootSequence: React.FC = () => {
           title={isMuted ? 'Click to Unmute Audio' : 'Mute Audio'}
         >
           {isMuted ? <VolumeX size={15} className="text-amber-400" /> : <Volume2 size={15} className="text-emerald-400" />}
-          <span className="hidden sm:inline">{isMuted ? 'UNMUTE' : 'MUTED'}</span>
+          <span className="hidden sm:inline">{isMuted ? 'UNMUTE' : 'AUDIO ON'}</span>
         </button>
 
         <button
@@ -89,6 +144,16 @@ export const BootSequence: React.FC = () => {
           <FastForward size={14} />
         </button>
       </div>
+
+      {/* Hint if browser requires a tap to play unmuted audio */}
+      {needsUserClickForAudio && (
+        <div className="absolute top-20 right-6 z-30 pointer-events-none animate-pulse">
+          <div className="px-3 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-300 text-[11px] font-mono font-bold backdrop-blur-md shadow-lg flex items-center gap-1.5">
+            <VolumeX size={13} />
+            <span>CLICK ANYWHERE TO UNMUTE AUDIO</span>
+          </div>
+        </div>
+      )}
 
       {/* Bottom Progress & Tactical Branding */}
       <div className="absolute bottom-0 inset-x-0 z-30 p-4 sm:p-6 flex flex-col gap-2 pointer-events-none">
