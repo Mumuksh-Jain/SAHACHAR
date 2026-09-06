@@ -122,23 +122,33 @@ export const BootSequence: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex flex-col justify-between overflow-hidden select-none"
+    <div className="fixed inset-0 z-[9999] flex flex-col justify-between overflow-hidden select-none relative"
          style={{
-           background: 'radial-gradient(ellipse at 50% 30%, #0c2b20 0%, #07140E 70%, #030a07 100%)',
+           background: 'radial-gradient(ellipse at 50% 30%, rgba(13, 27, 42, 0.9) 0%, rgba(10, 15, 29, 0.96) 70%, #050811 100%)',
            color: '#F8FAFC',
            fontFamily: 'Inter, system-ui, sans-serif'
          }}>
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-40 mix-blend-screen"
+        src="/BOOTING PAGE.mp4"
+      />
+
       {/* Dynamic scanline and grid overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-20"
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-[1]"
            style={{
-             backgroundImage: 'linear-gradient(rgba(45, 212, 191, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 212, 191, 0.1) 1px, transparent 1px)',
+             backgroundImage: 'linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px)',
              backgroundSize: '40px 40px',
            }}
       />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(7,20,14,0.85)_100%)]" />
+      <div className="absolute inset-0 pointer-events-none z-[1] bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,8,17,0.85)_100%)]" />
 
       {/* TOP CLASSIFICATION BAR */}
-      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-[#164E3D]/60 bg-[#0B1F16]/80 backdrop-blur-md">
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-b border-slate-700/60 bg-[#0B132B]/85 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-[#0F3E2E] border border-[#2DD4BF]/50 flex items-center justify-center text-[#2DD4BF] shadow-[0_0_15px_rgba(45,212,191,0.3)]">
             <Shield size={20} />
@@ -245,17 +255,17 @@ export const BootSequence: React.FC = () => {
                 key={idx}
                 className="rounded-xl p-2.5 border transition-all duration-300 flex flex-col justify-between"
                 style={{
-                  background: item.active ? 'rgba(15, 62, 46, 0.85)' : 'rgba(7, 20, 14, 0.7)',
-                  borderColor: item.active ? 'rgba(45, 212, 191, 0.5)' : 'rgba(22, 78, 61, 0.4)',
-                  boxShadow: item.active ? '0 0 15px rgba(45, 212, 191, 0.2)' : 'none',
+                  background: item.active ? 'rgba(14, 165, 233, 0.12)' : 'rgba(15, 23, 42, 0.7)',
+                  borderColor: item.active ? 'rgba(56, 189, 248, 0.5)' : 'rgba(51, 65, 85, 0.5)',
+                  boxShadow: item.active ? '0 0 15px rgba(56, 189, 248, 0.2)' : 'none',
                 }}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[10px] font-mono font-bold tracking-wider text-slate-300">{item.label}</span>
-                  <Icon size={13} className={item.active ? 'text-[#2DD4BF]' : 'text-slate-500'} />
+                  <Icon size={13} className={item.active ? 'text-[#38BDF8]' : 'text-slate-500'} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-mono font-bold ${item.active ? 'text-[#2DD4BF]' : 'text-[#E05A1B]'}`}>
+                  <span className={`text-xs font-mono font-bold ${item.active ? 'text-[#38BDF8]' : 'text-[#E05A1B]'}`}>
                     {item.status}
                   </span>
                   <span className="text-[10px] font-mono text-slate-400">{item.val}</span>
@@ -266,9 +276,9 @@ export const BootSequence: React.FC = () => {
         </div>
 
         {/* PROGRESS BAR */}
-        <div className="w-full bg-[#0B1F16]/90 rounded-full h-3.5 border border-[#164E3D] p-0.5 mb-2 relative overflow-hidden shadow-inner">
+        <div className="w-full bg-[#0B132B]/90 rounded-full h-3.5 border border-slate-700/80 p-0.5 mb-2 relative overflow-hidden shadow-inner">
           <motion.div
-            className="h-full rounded-full bg-gradient-to-r from-[#0F3E2E] via-[#2DD4BF] to-[#E05A1B] shadow-[0_0_15px_rgba(224,90,27,0.7)]"
+            className="h-full rounded-full bg-gradient-to-r from-[#0284C7] via-[#2DD4BF] to-[#E05A1B] shadow-[0_0_15px_rgba(224,90,27,0.7)]"
             style={{ width: `${progress}%` }}
             transition={{ ease: 'easeOut' }}
           />
@@ -287,9 +297,9 @@ export const BootSequence: React.FC = () => {
         </div>
 
         {/* LIVE TERMINAL LOG STREAM */}
-        <div className="w-full bg-[#05110B]/95 rounded-xl border border-[#164E3D] p-3 h-36 overflow-y-auto font-mono text-xs shadow-2xl backdrop-blur-sm">
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#164E3D]/50 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
-            <span className="flex items-center gap-1 text-[#2DD4BF]">
+        <div className="w-full bg-[#0B132B]/95 rounded-xl border border-slate-700/80 p-3 h-36 overflow-y-auto font-mono text-xs shadow-2xl backdrop-blur-sm">
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-700/50 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+            <span className="flex items-center gap-1 text-[#38BDF8]">
               <Terminal size={11} /> KERNEL TELEMETRY LOGS
             </span>
             <span className="animate-pulse text-[#E05A1B]">● REALTIME SYNC</span>
@@ -300,16 +310,16 @@ export const BootSequence: React.FC = () => {
               <div key={idx} className="flex items-start gap-2 text-[11px] leading-tight">
                 <span className="text-slate-500 font-mono select-none">[{step.time}]</span>
                 <span className={`font-bold select-none ${
-                  step.subsystem === 'SECURITY' ? 'text-[#2DD4BF]' :
-                  step.subsystem === 'SATELLITE' ? 'text-emerald-400' :
-                  step.subsystem === 'HYDROLOGY' ? 'text-teal-300' :
+                  step.subsystem === 'SECURITY' ? 'text-[#38BDF8]' :
+                  step.subsystem === 'SATELLITE' ? 'text-sky-400' :
+                  step.subsystem === 'HYDROLOGY' ? 'text-cyan-300' :
                   'text-[#E05A1B]'
                 }`}>
                   {step.subsystem}:
                 </span>
                 <span className="text-slate-200 flex-1">{step.message}</span>
                 {step.status === 'DONE' && (
-                  <CheckCircle2 size={12} className="text-[#2DD4BF] flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 size={12} className="text-[#38BDF8] flex-shrink-0 mt-0.5" />
                 )}
               </div>
             ))}
@@ -319,7 +329,7 @@ export const BootSequence: React.FC = () => {
       </div>
 
       {/* BOTTOM ACTION / CONFIRMATION FOOTER */}
-      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-t border-[#164E3D]/60 bg-[#0B1F16]/80 backdrop-blur-md">
+      <div className="relative z-10 flex items-center justify-between px-8 py-4 border-t border-slate-700/60 bg-[#0B132B]/85 backdrop-blur-md">
         <div className="flex items-center gap-3 text-xs text-slate-300 font-mono">
           <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#2DD4BF] animate-ping" />
           <span>ALL FAILSAFE MATRIXES OPERATIONAL • AES-256 ZERO LOSS ENCRYPTED</span>

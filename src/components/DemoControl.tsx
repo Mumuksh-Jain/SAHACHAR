@@ -158,8 +158,8 @@ export const DemoControl: React.FC = () => {
         whileHover={{ scale: 1.05 }}
         className="fixed bottom-5 right-5 z-50 flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono font-black tracking-wider cursor-pointer transition-all"
         style={{
-          background: isOpen ? '#07140E' : 'linear-gradient(135deg, #0F3E2E 0%, #07140E 100%)',
-          border: `1.5px solid ${isOpen ? 'rgba(45, 212, 191, 0.3)' : '#E05A1B'}`,
+          background: isOpen ? '#0B132B' : 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)',
+          border: `1.5px solid ${isOpen ? 'rgba(56, 189, 248, 0.3)' : '#E05A1B'}`,
           color: isOpen ? '#E8F3ED' : '#FAF8F5',
           boxShadow: isOpen ? '0 4px 20px rgba(0,0,0,0.8)' : '0 0 25px rgba(224, 90, 27, 0.4)',
         }}
@@ -175,9 +175,9 @@ export const DemoControl: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
-            className="fixed bottom-16 right-5 z-50 rounded-2xl p-4 w-80 crisis-card shadow-[0_16px_50px_rgba(0,0,0,0.8)] border border-[#2DD4BF]/30"
+            className="fixed bottom-16 right-5 z-50 rounded-2xl p-4 w-80 crisis-card shadow-[0_16px_50px_rgba(0,0,0,0.8)] border border-slate-700/60"
             style={{
-              background: '#07140E',
+              background: '#0B132B',
               maxHeight: '80vh',
               overflowY: 'auto',
             }}
@@ -196,7 +196,7 @@ export const DemoControl: React.FC = () => {
                 <select
                   value={autoDemoSpeed}
                   onChange={(e) => store.setAutoDemoSpeed(Number(e.target.value) as 1 | 2 | 4)}
-                  className="text-xs px-2 py-1 rounded-lg bg-[#0B1F16] border border-white/10 text-[#FAF8F5] font-mono"
+                  className="text-xs px-2 py-1 rounded-lg bg-[#0F172A] border border-white/10 text-[#FAF8F5] font-mono"
                 >
                   <option value={1}>1× Real</option>
                   <option value={2}>2× Fast</option>

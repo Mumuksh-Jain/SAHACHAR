@@ -35,16 +35,16 @@ export const DriverView: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#07140E]">
+    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#0A0F1D]">
       {/* Device Frame */}
-      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0A1A14] border-2 border-[#164E3D] shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
+      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0B132B] border-2 border-slate-700/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
         {/* Device Notch */}
         <div className="w-32 h-4 bg-black/80 rounded-b-2xl mx-auto mb-2 flex items-center justify-center">
           <div className="w-12 h-1 bg-white/20 rounded-full" />
         </div>
 
         {/* Inner Screen */}
-        <div className="rounded-[32px] p-4 bg-[#06100B] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
+        <div className="rounded-[32px] p-4 bg-[#0F172A] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
           {/* Top Bar */}
           <div>
             <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
@@ -200,13 +200,13 @@ export const CitizenView: React.FC = () => {
     `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#07140E]">
-      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0A1A14] border-2 border-[#164E3D] shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
+    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#0A0F1D]">
+      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0B132B] border-2 border-slate-700/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
         <div className="w-32 h-4 bg-black/80 rounded-b-2xl mx-auto mb-2 flex items-center justify-center">
           <div className="w-12 h-1 bg-white/20 rounded-full" />
         </div>
 
-        <div className="rounded-[32px] p-4 bg-[#06100B] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
+        <div className="rounded-[32px] p-4 bg-[#0F172A] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
           <div>
             {/* Header */}
             <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
@@ -306,13 +306,13 @@ export const FieldView: React.FC = () => {
   const [taskState, setTaskState] = useState<'pending' | 'open' | 'restricted' | 'blocked' | 'submitted'>('pending');
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#07140E]">
-      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0A1A14] border-2 border-[#164E3D] shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
+    <div className="h-screen w-screen flex items-center justify-center p-4 bg-[#0A0F1D]">
+      <div className="w-[380px] max-w-full rounded-[40px] p-3 bg-[#0B132B] border-2 border-slate-700/80 shadow-[0_25px_60px_rgba(0,0,0,0.8)] flex flex-col">
         <div className="w-32 h-4 bg-black/80 rounded-b-2xl mx-auto mb-2 flex items-center justify-center">
           <div className="w-12 h-1 bg-white/20 rounded-full" />
         </div>
 
-        <div className="rounded-[32px] p-4 bg-[#06100B] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
+        <div className="rounded-[32px] p-4 bg-[#0F172A] flex-1 flex flex-col justify-between border border-white/5 overflow-y-auto">
           <div>
             <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
               <div className="flex items-center gap-2">

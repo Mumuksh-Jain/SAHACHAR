@@ -358,8 +358,8 @@ const TopBar: React.FC = () => {
   return (
     <div className="flex items-center justify-between px-6 py-2.5 shadow-xl relative z-20 backdrop-blur-2xl"
       style={{
-        background: 'rgba(11, 31, 22, 0.98)',
-        borderBottom: '1px solid rgba(45, 212, 191, 0.22)',
+        background: 'rgba(11, 19, 43, 0.98)',
+        borderBottom: '1px solid rgba(56, 189, 248, 0.22)',
       }}>
       {/* Brand & Administrative Jurisdiction with Official SAHACHAR Logo */}
       <div className="flex items-center gap-3.5">
@@ -570,7 +570,7 @@ export const MissionControl: React.FC = () => {
   }, []);
 
   return (
-    <div className="h-screen w-screen flex flex-col overflow-hidden relative" style={{ background: 'linear-gradient(135deg, #07140E 0%, #0B1F16 50%, #040A07 100%)' }}>
+    <div className="h-screen w-screen flex flex-col overflow-hidden relative" style={{ background: 'linear-gradient(135deg, #0A0F1D 0%, #0F172A 50%, #0B132B 100%)' }}>
       {/* ── EMERGENCY RED ALERT SCREEN STROBE ── */}
       {isEmergencyAlert && <div className="emergency-screen-alert pointer-events-none" />}
 
@@ -704,7 +704,7 @@ export const MissionControl: React.FC = () => {
         {/* ── LEFT RAIL (22%) ── */}
         <div
           className="flex flex-col overflow-hidden flex-shrink-0 backdrop-blur-xl"
-          style={{ width: '22%', background: 'rgba(11, 31, 22, 0.96)', borderRight: '1px solid rgba(45, 212, 191, 0.22)' }}
+          style={{ width: '22%', background: 'rgba(15, 23, 42, 0.96)', borderRight: '1px solid rgba(56, 189, 248, 0.2)' }}
         >
           <LeftRailPanel />
         </div>
@@ -718,11 +718,11 @@ export const MissionControl: React.FC = () => {
         {/* ── RIGHT RAIL (22%) ── */}
         <div
           className="flex flex-col overflow-hidden flex-shrink-0 backdrop-blur-xl"
-          style={{ width: '22%', background: 'rgba(11, 31, 22, 0.96)', borderLeft: '1px solid rgba(45, 212, 191, 0.22)' }}
+          style={{ width: '22%', background: 'rgba(15, 23, 42, 0.96)', borderLeft: '1px solid rgba(56, 189, 248, 0.2)' }}
         >
           {/* SIH Banner Theme Tab switcher */}
           <div className="p-2 border-b border-white/5">
-            <div className="flex p-1 rounded-xl bg-[#07140E] border border-[#164E3D]/50">
+            <div className="flex p-1 rounded-xl bg-[#0B132B] border border-slate-700/60">
               {(['fleet', 'missions'] as RightTab[]).map(tab => (
                 <button
                   key={tab}
@@ -776,7 +776,7 @@ export const MissionControl: React.FC = () => {
       </div>
 
       {/* ── BOTTOM TIMELINE ── */}
-      <div style={{ height: 100, background: 'rgba(10, 19, 14, 0.96)', borderTop: '1px solid rgba(224, 165, 59, 0.15)', flexShrink: 0 }}>
+      <div style={{ height: 100, background: 'rgba(11, 19, 43, 0.96)', borderTop: '1px solid rgba(56, 189, 248, 0.15)', flexShrink: 0 }}>
         <FleetTimeline />
       </div>
 

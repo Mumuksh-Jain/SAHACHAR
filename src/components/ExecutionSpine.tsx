@@ -61,8 +61,8 @@ export const ExecutionSpine: React.FC = () => {
   return (
     <div className="relative flex items-center gap-0 px-6 py-2.5 shadow-lg z-10 backdrop-blur-md"
       style={{
-        borderBottom: '1px solid rgba(45, 212, 191, 0.22)',
-        background: 'rgba(11, 31, 22, 0.98)'
+        borderBottom: '1px solid rgba(56, 189, 248, 0.2)',
+        background: 'rgba(11, 19, 43, 0.98)'
       }}>
       {/* Breach Disruption Alert banner */}
       <AnimatePresence>
@@ -92,9 +92,9 @@ export const ExecutionSpine: React.FC = () => {
                   className="h-[2px] w-6 lg:w-9 flex-shrink-0 transition-all duration-500"
                   style={{
                     background: status === 'done' || (idx > 0 && getStageStatus(stages[idx - 1].id, demoStage) === 'done')
-                      ? 'linear-gradient(90deg, #134E35, #2DD4BF)'
+                      ? 'linear-gradient(90deg, #0284C7, #38BDF8)'
                       : 'rgba(255, 255, 255, 0.08)',
-                    boxShadow: status === 'done' ? '0 0 8px rgba(45, 212, 191, 0.5)' : 'none'
+                    boxShadow: status === 'done' ? '0 0 8px rgba(56, 189, 248, 0.5)' : 'none'
                   }}
                 />
               )}
@@ -111,15 +111,15 @@ export const ExecutionSpine: React.FC = () => {
                     width: status === 'active' ? 30 : 24,
                     height: status === 'active' ? 30 : 24,
                     background:
-                      status === 'done' ? 'rgba(45, 212, 191, 0.22)' :
+                      status === 'done' ? 'rgba(56, 189, 248, 0.22)' :
                         status === 'active' ? (isReplan && isDisrupted ? 'rgba(220, 38, 38, 0.35)' : 'rgba(224, 90, 27, 0.35)') :
-                          'rgba(7, 20, 14, 0.85)',
-                    border: `1.5px solid ${status === 'done' ? '#2DD4BF' :
+                          'rgba(15, 23, 42, 0.85)',
+                    border: `1.5px solid ${status === 'done' ? '#38BDF8' :
                       status === 'active' ? (isReplan && isDisrupted ? '#ef4444' : '#E05A1B') :
                         'rgba(255, 255, 255, 0.12)'}`,
                     boxShadow: status === 'active' ?
                       (isReplan && isDisrupted ? '0 0 16px rgba(220,38,38,0.7)' : '0 0 16px rgba(224,90,27,0.7)') :
-                      status === 'done' ? '0 0 8px rgba(45,212,191,0.3)' : 'none',
+                      status === 'done' ? '0 0 8px rgba(56,189,248,0.3)' : 'none',
                   }}
                 >
                   {status === 'done' ? (

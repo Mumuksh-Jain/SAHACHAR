@@ -73,7 +73,7 @@ export const FleetTimeline: React.FC = () => {
   const cutoffPercent = ((PAIKA_CUTOFF - TIMELINE_START) / TIMELINE_SPAN) * 100;
 
   return (
-    <div className="h-full flex flex-col px-3 py-2 overflow-hidden bg-[#07140E]/95 select-none">
+    <div className="h-full flex flex-col px-3 py-2 overflow-hidden bg-[#0B132B]/95 select-none">
       {/* Timeline Header with Legend */}
       <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/5">
         <div className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export const FleetTimeline: React.FC = () => {
                 {/* Timeline bar track */}
                 <div
                   className="flex-1 relative h-5 rounded-lg border border-white/5 overflow-hidden"
-                  style={{ background: 'rgba(11, 31, 22, 0.7)' }}
+                  style={{ background: 'rgba(15, 23, 42, 0.7)' }}
                 >
                   {bars.map(b => {
                     const left = Math.max(0, timeToPercent(b.start));
