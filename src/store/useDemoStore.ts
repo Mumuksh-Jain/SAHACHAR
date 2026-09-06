@@ -208,7 +208,7 @@ export const useDemoStore = create<DemoStore>((set, get) => ({
   setAppView: (view) => set({ appView: view }),
   language: 'en',
   setLanguage: (lang) => set({ language: lang }),
-  isBooting: false,
+  isBooting: true,
   setIsBooting: (b) => set({ isBooting: b }),
   triggerBoot: () => set({ isBooting: true }),
 
