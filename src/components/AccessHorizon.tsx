@@ -55,7 +55,7 @@ export const AccessHorizonPanel: React.FC = () => {
       className="flex flex-col gap-3 h-full overflow-y-auto"
     >
       {/* Settlement header - Apple Grade Frosted Card */}
-      <div className="rounded-2xl p-4 backdrop-blur-xl" style={{ background: 'rgba(11, 31, 22, 0.94)', border: '1px solid rgba(45, 212, 191, 0.22)' }}>
+      <div className="rounded-2xl p-4 backdrop-blur-xl" style={{ background: 'rgba(15, 23, 42, 0.94)', border: '1px solid rgba(56, 189, 248, 0.22)' }}>
         <div className="flex items-start justify-between mb-3">
           <div>
             <div className="flex items-center gap-2">
@@ -281,8 +281,8 @@ export const RouteComparisonPanel: React.FC = () => {
         }}
         className="rounded-2xl p-3.5 cursor-pointer backdrop-blur-xl transition-all"
         style={{
-          background: selected === 'R3' ? 'rgba(15, 62, 46, 0.95)' : 'rgba(11, 31, 22, 0.85)',
-          border: `1.5px solid ${selected === 'R3' ? '#2DD4BF' : 'rgba(45, 212, 191, 0.18)'}`,
+          background: selected === 'R3' ? 'rgba(14, 165, 233, 0.15)' : 'rgba(15, 23, 42, 0.85)',
+          border: `1.5px solid ${selected === 'R3' ? '#2DD4BF' : 'rgba(56, 189, 248, 0.18)'}`,
         }}
       >
         <div className="flex justify-between items-start mb-2">

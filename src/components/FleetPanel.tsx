@@ -263,7 +263,7 @@ export const FleetPanel: React.FC = () => {
 
                 {/* Progress bar if en route */}
                 {active && progress > 0 && (
-                  <div className="mb-2 bg-[#07140E] p-2 rounded-xl border border-white/5">
+                  <div className="mb-2 bg-[#0F172A] p-2 rounded-xl border border-white/5">
                     <div className="flex justify-between items-center text-[10px] font-mono mb-1">
                       <span className="text-[#E8F3ED]/60 flex items-center gap-1">
                         <Gauge size={11} className="text-[#2DD4BF]" /> CORRIDOR TRANSIT

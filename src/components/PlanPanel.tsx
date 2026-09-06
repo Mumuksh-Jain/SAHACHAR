@@ -36,8 +36,8 @@ export const PlanPanel: React.FC = () => {
       {/* Plan header - Storm & Sanctuary Card */}
       <div className="rounded-2xl p-4 backdrop-blur-xl flex items-center justify-between"
         style={{
-          background: isV2 ? 'rgba(45, 18, 20, 0.94)' : 'rgba(11, 31, 22, 0.94)',
-          border: `1.5px solid ${isV2 ? 'rgba(220, 38, 38, 0.5)' : 'rgba(45, 212, 191, 0.25)'}`,
+          background: isV2 ? 'rgba(38, 14, 20, 0.94)' : 'rgba(15, 23, 42, 0.94)',
+          border: `1.5px solid ${isV2 ? 'rgba(220, 38, 38, 0.5)' : 'rgba(56, 189, 248, 0.25)'}`,
         }}>
         <div>
           <div className="font-mono font-black text-lg tracking-wider" style={{ color: isV2 ? '#fca5a5' : '#FAF8F5' }}>
@@ -68,8 +68,8 @@ export const PlanPanel: React.FC = () => {
               transition={{ delay: i * 0.08 }}
               className="rounded-2xl p-3 backdrop-blur-xl"
               style={{
-                background: 'rgba(11, 31, 22, 0.88)',
-                border: `1px solid ${isChanged ? 'rgba(220, 38, 38, 0.5)' : 'rgba(45, 212, 191, 0.18)'}`,
+                background: 'rgba(15, 23, 42, 0.88)',
+                border: `1px solid ${isChanged ? 'rgba(220, 38, 38, 0.5)' : 'rgba(56, 189, 248, 0.2)'}`,
               }}
             >
               <div className="flex items-center justify-between mb-1.5">
@@ -282,8 +282,8 @@ export const ApprovalPanel: React.FC = () => {
             animate={{ opacity: 1 }}
             className="rounded-2xl p-3.5 backdrop-blur-xl"
             style={{
-              background: 'rgba(11, 31, 22, 0.94)',
-              border: '1px solid rgba(45, 212, 191, 0.25)',
+              background: 'rgba(15, 23, 42, 0.94)',
+              border: '1px solid rgba(56, 189, 248, 0.25)',
             }}
           >
             <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-2 uppercase">RESERVING CONVOY UNITS...</div>
@@ -330,8 +330,8 @@ export const DispatchPanel: React.FC = () => {
       {/* Driver mobile notification */}
       <div className="rounded-2xl p-4 backdrop-blur-xl shadow-xl"
         style={{
-          background: 'rgba(11, 31, 22, 0.94)',
-          border: '1px solid rgba(45, 212, 191, 0.25)',
+          background: 'rgba(15, 23, 42, 0.94)',
+          border: '1px solid rgba(56, 189, 248, 0.25)',
         }}>
         <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-2 tracking-widest uppercase flex items-center justify-between">
           <span>DRIVER DISPATCH TELEMETRY</span>
@@ -350,7 +350,7 @@ export const DispatchPanel: React.FC = () => {
             <span className="font-semibold text-slate-100">{value}</span>
           </div>
         ))}
-        <div className="mt-3 py-2 text-center text-xs font-mono font-bold text-[#2DD4BF] rounded-xl bg-[#0F3E2E]/80 border border-[#2DD4BF]/40">
+        <div className="mt-3 py-2 text-center text-xs font-mono font-bold text-[#2DD4BF] rounded-xl bg-slate-900/80 border border-[#2DD4BF]/40">
           {driverAck ? '✓ DRIVER ACKNOWLEDGED & EN ROUTE' : 'AWAITING DRIVER HANDSHAKE...'}
         </div>
       </div>
@@ -363,8 +363,8 @@ export const DispatchPanel: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="rounded-2xl p-4 backdrop-blur-xl shadow-xl"
             style={{
-              background: 'rgba(11, 31, 22, 0.94)',
-              border: '1px solid rgba(45, 212, 191, 0.25)',
+              background: 'rgba(15, 23, 42, 0.94)',
+              border: '1px solid rgba(56, 189, 248, 0.25)',
             }}
           >
             <div className="text-[10px] font-mono font-bold text-[#E05A1B] mb-1 tracking-widest uppercase">

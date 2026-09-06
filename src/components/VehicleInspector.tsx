@@ -19,8 +19,8 @@ export const VehicleInspectorPanel: React.FC = () => {
       {/* Vehicle header - Storm & Sanctuary Card */}
       <div className="rounded-2xl p-4 backdrop-blur-xl"
         style={{
-          background: 'rgba(11, 31, 22, 0.94)',
-          border: '1px solid rgba(45, 212, 191, 0.22)',
+          background: 'rgba(15, 23, 42, 0.94)',
+          border: '1px solid rgba(56, 189, 248, 0.22)',
         }}>
         <div className="flex items-center gap-3 mb-3">
           <div className="text-3xl p-2 rounded-xl bg-[#0F3E2E] border border-[#2DD4BF]/30">🚛</div>
@@ -105,8 +105,8 @@ export const CapacityCalcPanel: React.FC = () => {
       {/* Animal loading manifest */}
       <div className="rounded-2xl p-3.5 backdrop-blur-xl flex flex-col gap-1.5"
         style={{
-          background: 'rgba(11, 31, 22, 0.94)',
-          border: '1px solid rgba(45, 212, 191, 0.2)',
+          background: 'rgba(15, 23, 42, 0.94)',
+          border: '1px solid rgba(56, 189, 248, 0.2)',
         }}>
         <div className="text-[10px] font-mono font-bold text-slate-400 mb-1 flex items-center justify-between border-b border-white/5 pb-1">
           <span>INDIVIDUAL CATTLE ALLOCATION (T07)</span>
@@ -118,7 +118,7 @@ export const CapacityCalcPanel: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex justify-between items-center py-1.5 px-2.5 rounded-lg bg-[#07140E] border border-white/5"
+                className="flex justify-between items-center py-1.5 px-2.5 rounded-lg bg-[#0B132B] border border-white/5"
               >
                 <span className="text-xs text-slate-200 flex items-center gap-1.5">
                   <span>🐄</span> {animal.label}
@@ -140,8 +140,8 @@ export const CapacityCalcPanel: React.FC = () => {
           >
             <div className="rounded-2xl p-3.5 backdrop-blur-xl"
               style={{
-                background: 'rgba(11, 31, 22, 0.94)',
-                border: '1px solid rgba(45, 212, 191, 0.2)',
+                background: 'rgba(15, 23, 42, 0.94)',
+                border: '1px solid rgba(56, 189, 248, 0.2)',
               }}>
               <div className="flex justify-between items-center py-1 border-b border-white/5">
                 <span className="text-xs text-slate-400">Total Cattle Weight</span>

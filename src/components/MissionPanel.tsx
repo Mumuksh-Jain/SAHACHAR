@@ -68,7 +68,7 @@ export const MissionPanel: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#07140E]/95">
+    <div className="flex flex-col h-full bg-[#0B132B]/95">
       {/* Filter Tabs */}
       <div className="flex gap-1.5 p-2.5 border-b border-white/5 flex-wrap">
         {[
@@ -227,7 +227,7 @@ export const MissionPanel: React.FC = () => {
                     </div>
 
                     {/* Corridor & Safeguards */}
-                    <div className="grid grid-cols-2 gap-2 text-[10px] font-mono bg-[#07140E] p-2 rounded-xl border border-white/5">
+                    <div className="grid grid-cols-2 gap-2 text-[10px] font-mono bg-[#0F172A] p-2 rounded-xl border border-white/5">
                       <div>
                         <span className="text-[#E8F3ED]/40 block text-[9px]">ASSIGNED CORRIDOR</span>
                         <strong className="text-[#2DD4BF]">{mission.routeId} (High Embankment)</strong>

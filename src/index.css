@@ -5,17 +5,17 @@
 @tailwind utilities;
 
 :root {
-  /* Foundations: Deep Forest Pine & Slate Command Backdrop */
-  --bg-base: #07140E;
-  --bg-surface: #0B1F16;
-  --bg-elevated: #0F2C20;
-  --bg-surface-frosted: rgba(11, 31, 22, 0.94);
-  --bg-border: rgba(45, 212, 191, 0.22);
-  --bg-hover: #164E3D;
+  /* Foundations: Clean Tactical Deep Slate-Navy & White */
+  --bg-base: #0B132B;
+  --bg-surface: #111C38;
+  --bg-elevated: #18284C;
+  --bg-surface-frosted: rgba(17, 28, 56, 0.92);
+  --bg-border: rgba(56, 189, 248, 0.22);
+  --bg-hover: #1E3A8A;
 
-  /* Official Smart India Hackathon 2025 SAHACHAR-DRR Palette */
-  --color-forest: #0F3E2E;         /* Institutional Forest Resilience Green */
-  --color-pine: #134E35;           /* Deep Sanctuary Green */
+  /* Official Brand Colors (Accents from the Banner) */
+  --color-forest: #0F4D3A;         /* Primary Brandmark Forest Green */
+  --color-pine: #14532D;           /* Deep Livelihood Sanctuary Green */
   --color-orange: #E05A1B;         /* High-Visibility Rescue Action Orange */
   --color-orange-glow: #F97316;    /* Emergency Alert Glow */
   --color-sage: #E8F3ED;           /* Soft Botanical Sage Pill Tint */
@@ -82,32 +82,32 @@ html, body {
   .text-mono { font-family: 'JetBrains Mono', monospace; }
   
   .crisis-card {
-    background: rgba(11, 31, 22, 0.94);
+    background: rgba(15, 23, 42, 0.94);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(45, 212, 191, 0.22);
+    border: 1px solid rgba(56, 189, 248, 0.2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   .crisis-card-white {
     background: #FFFFFF;
-    color: #0F1E16;
+    color: #0F172A;
     border: 1px solid #E2E8F0;
-    box-shadow: 0 10px 30px rgba(7, 20, 14, 0.15);
+    box-shadow: 0 10px 30px rgba(11, 19, 43, 0.08);
   }
 
   .crisis-card-danger {
-    background: rgba(45, 14, 16, 0.94);
+    background: rgba(38, 14, 20, 0.94);
     backdrop-filter: blur(20px);
     border: 1.5px solid rgba(220, 38, 38, 0.6);
     box-shadow: 0 0 30px rgba(220, 38, 38, 0.25);
   }
 
   .crisis-card-sanctuary {
-    background: rgba(15, 46, 33, 0.95);
+    background: rgba(17, 28, 56, 0.95);
     backdrop-filter: blur(20px);
-    border: 1.5px solid rgba(45, 212, 191, 0.4);
-    box-shadow: 0 0 30px rgba(15, 62, 46, 0.35);
+    border: 1.5px solid rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.25);
   }
 
   .sanctuary-border { border-color: rgba(45, 212, 191, 0.4); }
