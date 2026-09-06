@@ -776,7 +776,7 @@ export const MissionControl: React.FC = () => {
       </div>
 
       {/* ── BOTTOM TIMELINE ── */}
-      <div style={{ height: 100, background: 'rgba(11, 19, 43, 0.96)', borderTop: '1px solid rgba(56, 189, 248, 0.15)', flexShrink: 0 }}>
+      <div style={{ height: 165, background: 'rgba(10, 14, 26, 0.98)', borderTop: '1px solid rgba(56, 189, 248, 0.25)', flexShrink: 0 }}>
         <FleetTimeline />
       </div>
 

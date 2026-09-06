@@ -61,41 +61,38 @@ export const FleetTimeline: React.FC = () => {
   const isEvacuating = ['EVACUATING', 'DISRUPTION', 'REPLANNING', 'PLAN_V2',
     'RESOURCE_GAP', 'ESCALATION', 'EVACUATING_V2', 'COMPLETED'].includes(demoStage);
 
-  if (!isEvacuating) {
-    return (
-      <div className="h-full flex items-center justify-center text-xs text-[#E2D9CE]/40 font-mono tracking-wider">
-        CONVOY SORTIE TIMELINE ARMS UPON MISSION DISPATCH
-      </div>
-    );
-  }
-
   const ticks = [12 * 60, 12 * 60 + 30, 13 * 60, 13 * 60 + 30, 14 * 60, 14 * 60 + 30];
   const cutoffPercent = ((PAIKA_CUTOFF - TIMELINE_START) / TIMELINE_SPAN) * 100;
 
   return (
-    <div className="h-full flex flex-col px-3 py-2 overflow-hidden bg-[#0B132B]/95 select-none">
+    <div className="h-full flex flex-col px-3 py-1.5 overflow-hidden bg-[#070D18]/95 select-none text-slate-100">
       {/* Timeline Header with Legend */}
-      <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/5">
+      <div className="flex items-center justify-between mb-1 pb-1 border-b border-slate-700/60">
         <div className="flex items-center gap-2">
           <Clock size={12} className="text-[#E05A1B]" />
-          <span className="text-[10px] font-mono font-bold tracking-widest text-[#FAF8F5] uppercase">
+          <span className="text-[10px] font-mono font-bold tracking-widest text-white uppercase">
             SYNCHRONIZED EVACUATION TIMELINE
           </span>
-          <span className="text-[9px] text-[#E8F3ED]/50 font-sans hidden sm:inline">
+          <span className="text-[9px] text-slate-400 font-sans hidden sm:inline">
             (Paika River Rising • Bridge Submergence Horizon: 13:05)
           </span>
+          {!isEvacuating && (
+            <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded bg-slate-800 text-amber-400 border border-amber-500/30">
+              STANDBY SCHEDULE
+            </span>
+          )}
         </div>
 
         {/* Legend */}
         <div className="flex items-center gap-3 text-[9px] font-mono">
-          <span className="flex items-center gap-1 text-[#2DD4BF]">
-            <span className="w-2 h-2 rounded bg-[#0F3E2E] border border-[#2DD4BF]" /> HUMAN
+          <span className="flex items-center gap-1 text-[#38BDF8]">
+            <span className="w-2 h-2 rounded bg-[#0284C7] border border-[#38BDF8]" /> HUMAN
           </span>
           <span className="flex items-center gap-1 text-[#FBBF24]">
-            <span className="w-2 h-2 rounded bg-[#D97706]" /> LIVESTOCK
+            <span className="w-2 h-2 rounded bg-[#D97706] border border-[#FBBF24]" /> LIVESTOCK
           </span>
-          <span className="flex items-center gap-1 text-[#2DD4BF]">
-            <span className="w-2 h-2 rounded bg-[#2DD4BF]" /> SANCTUARY REACHED
+          <span className="flex items-center gap-1 text-[#4ADE80]">
+            <span className="w-2 h-2 rounded bg-[#10B981] border border-[#4ADE80]" /> SANCTUARY
           </span>
           <span className="flex items-center gap-1 text-[#F87171]">
             <span className="w-2 h-0.5 bg-[#DC2626]" /> 13:05 CUTOFF
@@ -103,7 +100,7 @@ export const FleetTimeline: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex-1 relative overflow-x-auto min-w-[600px]">
+      <div className="flex-1 relative overflow-x-auto overflow-y-auto min-w-[600px]">
         {/* Ticks header */}
         <div className="relative mb-1" style={{ marginLeft: 65 }}>
           <div className="relative h-4">
@@ -118,7 +115,7 @@ export const FleetTimeline: React.FC = () => {
                     transform: 'translateX(-50%)',
                   }}
                 >
-                  <span className="text-[9px] font-mono text-[#E2D9CE]/60 font-medium">
+                  <span className="text-[9px] font-mono text-slate-400 font-medium">
                     {formatTick(tick)}
                   </span>
                 </div>
@@ -136,8 +133,8 @@ export const FleetTimeline: React.FC = () => {
                 style={{
                   left: `${pct}%`,
                   width: 1,
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  height: '140px',
+                  background: 'rgba(255, 255, 255, 0.07)',
+                  height: '180px',
                   pointerEvents: 'none',
                 }}
               />
@@ -150,7 +147,7 @@ export const FleetTimeline: React.FC = () => {
             style={{
               left: `${cutoffPercent}%`,
               transform: 'translateX(-50%)',
-              height: '145px',
+              height: '180px',
             }}
           >
             <div className="bg-[#DC2626] text-white text-[8px] font-mono font-black px-1.5 py-0.5 rounded shadow-lg flex items-center gap-1 whitespace-nowrap">
@@ -165,38 +162,38 @@ export const FleetTimeline: React.FC = () => {
             style={{
               left: `${nowPercent}%`,
               transform: 'translateX(-50%)',
-              height: '145px',
+              height: '180px',
             }}
           >
-            <div className="bg-[#D4AF37] text-black text-[8px] font-mono font-black px-1.5 py-0.5 rounded shadow-lg whitespace-nowrap">
+            <div className="bg-[#E05A1B] text-white text-[8px] font-mono font-black px-1.5 py-0.5 rounded shadow-lg whitespace-nowrap">
               NOW {scenarioTime}
             </div>
-            <div className="w-0.5 flex-1 bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]" />
+            <div className="w-0.5 flex-1 bg-[#E05A1B] shadow-[0_0_8px_#E05A1B]" />
           </div>
         </div>
 
         {/* Vehicle Rows */}
-        <div className="flex flex-col gap-1.5 relative z-10" style={{ marginLeft: 0 }}>
+        <div className="flex flex-col gap-1 relative z-10" style={{ marginLeft: 0 }}>
           {vehiclesList.map(veh => {
             const bars = missionBars.filter(b => b.vehicleId === veh.id);
 
             return (
-              <div key={veh.id} className="flex items-center gap-2" style={{ height: 22 }}>
+              <div key={veh.id} className="flex items-center gap-2" style={{ height: 18 }}>
                 {/* Vehicle label */}
                 <div
                   className="font-mono font-bold text-right flex items-center justify-end gap-1 flex-shrink-0"
                   style={{ width: 60, fontSize: 10 }}
                 >
-                  <span className="text-[#FAF8F5]">{veh.id}</span>
-                  <span className="text-[9px] text-[#E2D9CE]/40">
+                  <span className="text-slate-200">{veh.id}</span>
+                  <span className="text-[9px] text-slate-400">
                     {veh.type === 'LIVESTOCK' ? '🐄' : veh.type === 'MEDICAL' ? '🚑' : '👤'}
                   </span>
                 </div>
 
                 {/* Timeline bar track */}
                 <div
-                  className="flex-1 relative h-5 rounded-lg border border-white/5 overflow-hidden"
-                  style={{ background: 'rgba(15, 23, 42, 0.7)' }}
+                  className="flex-1 relative h-4 rounded border border-white/5 overflow-hidden"
+                  style={{ background: 'rgba(15, 23, 42, 0.75)' }}
                 >
                   {bars.map(b => {
                     const left = Math.max(0, timeToPercent(b.start));
@@ -206,23 +203,23 @@ export const FleetTimeline: React.FC = () => {
                     // Match dynamic mission status
                     const mObj = missions.find(m => m.id === b.missionId);
                     const isComplete = mObj?.status === 'COMPLETED' || demoStage === 'COMPLETED';
-                    const isActive = mObj && !['COMPLETED', 'PLANNED', 'BLOCKED'].includes(mObj.status);
+                    const isActive = isEvacuating && mObj && !['COMPLETED', 'PLANNED', 'BLOCKED'].includes(mObj.status);
                     const isBlocked = mObj?.status === 'BLOCKED' || (b.vehicleId === 'T09' && demoStage === 'DISRUPTION');
 
-                    let bgGradient = 'linear-gradient(90deg, #0F3E2E, #134E35)';
-                    let borderCol = '#2DD4BF';
+                    let bgGradient = 'linear-gradient(90deg, #0284C7, #0369A1)';
+                    let borderCol = '#38BDF8';
 
                     if (b.type === 'LIVESTOCK') {
                       bgGradient = 'linear-gradient(90deg, #D97706, #B45309)';
                       borderCol = '#F59E0B';
                     } else if (b.type === 'MEDICAL') {
-                      bgGradient = 'linear-gradient(90deg, #E05A1B, #EA580C)';
-                      borderCol = '#F97316';
+                      bgGradient = 'linear-gradient(90deg, #DC2626, #B91C1C)';
+                      borderCol = '#EF4444';
                     }
 
                     if (isComplete) {
-                      bgGradient = 'linear-gradient(90deg, #0F3E2E, #134E35)';
-                      borderCol = '#2DD4BF';
+                      bgGradient = 'linear-gradient(90deg, #10B981, #059669)';
+                      borderCol = '#34D399';
                     } else if (isBlocked) {
                       bgGradient = 'linear-gradient(90deg, #7F1D1D, #991B1B)';
                       borderCol = '#DC2626';
@@ -231,10 +228,10 @@ export const FleetTimeline: React.FC = () => {
                     return (
                       <motion.div
                         key={b.missionId}
-                        initial={{ opacity: 0.8 }}
+                        initial={{ opacity: 0.85 }}
                         animate={{
-                          opacity: isActive ? [0.85, 1, 0.85] : 0.95,
-                          boxShadow: isActive ? '0 0 10px rgba(45,212,191,0.5)' : 'none',
+                          opacity: isActive ? [0.85, 1, 0.85] : isEvacuating ? 0.95 : 0.75,
+                          boxShadow: isActive ? '0 0 10px rgba(56,189,248,0.5)' : 'none',
                         }}
                         transition={{ duration: 1.5, repeat: isActive ? Infinity : 0 }}
                         className="absolute top-0.5 bottom-0.5 rounded px-1.5 flex items-center justify-between overflow-hidden cursor-default"
@@ -246,13 +243,13 @@ export const FleetTimeline: React.FC = () => {
                         }}
                         title={`${b.label} (${b.desc})`}
                       >
-                        <span className="text-[9px] font-mono font-bold text-white truncate drop-shadow-sm">
+                        <span className="text-[8.5px] font-mono font-bold text-white truncate drop-shadow-sm">
                           {b.label}
                         </span>
                         {isComplete ? (
-                          <ShieldCheck size={10} className="text-white flex-shrink-0 ml-1" />
+                          <ShieldCheck size={9} className="text-white flex-shrink-0 ml-1" />
                         ) : isBlocked ? (
-                          <AlertTriangle size={10} className="text-amber-300 flex-shrink-0 ml-1" />
+                          <AlertTriangle size={9} className="text-amber-300 flex-shrink-0 ml-1" />
                         ) : null}
                       </motion.div>
                     );

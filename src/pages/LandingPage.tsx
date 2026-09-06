@@ -132,7 +132,7 @@ export const LandingPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-[#070D18] text-slate-100 flex flex-col selection:bg-[#E05A1B] selection:text-white relative overflow-x-hidden font-sans">
+    <div className="min-h-screen w-full bg-[#070D18] text-slate-100 flex flex-col selection:bg-[#E05A1B] selection:text-white relative overflow-x-hidden font-sans scroll-smooth">
       
       {/* Tactical Grid Atmosphere */}
       <div className="fixed inset-0 pointer-events-none z-0">
@@ -146,11 +146,32 @@ export const LandingPage: React.FC = () => {
       <header className="sticky top-0 z-50 w-full border-b border-slate-800/90 bg-[#070D18]/95 backdrop-blur-xl px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-2xl">
         <div className="flex items-center gap-4">
           <SahacharLogo clickable={false} />
-          <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1929] border border-slate-700/80 text-[11px] font-mono text-slate-300">
+          <div className="hidden 2xl:flex items-center gap-2 px-3 py-1 rounded-full bg-[#0D1929] border border-slate-700/80 text-[11px] font-mono text-slate-300">
             <span className="w-2 h-2 rounded-full bg-[#E05A1B] animate-pulse" />
-            ZERO CASUALTY EVACUATION RADAR • FLOOD RISK DECISION ENGINE ACTIVE
+            ZERO CASUALTY RADAR
           </div>
         </div>
+
+        {/* Tactical Navbar Links */}
+        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[11px] xl:text-xs font-mono font-bold tracking-wider text-slate-300">
+          {[
+            { label: 'OVERVIEW', href: '#hero' },
+            { label: 'METRICS', href: '#metrics' },
+            { label: 'CHALLENGES', href: '#challenges' },
+            { label: 'RECON VIDEO', href: '#recon-video' },
+            { label: '4 PILLARS', href: '#pillars' },
+            { label: 'VIEWPORTS', href: '#viewports' },
+            { label: 'HELPLINES', href: '#helplines' },
+          ].map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              className="px-2.5 py-1.5 rounded-lg hover:text-[#2DD4BF] hover:bg-slate-800/80 transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
 
         {/* Action Controls */}
         <div className="flex items-center gap-2.5 sm:gap-3">
@@ -185,7 +206,7 @@ export const LandingPage: React.FC = () => {
       <main className="relative z-10 flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-14">
 
         {/* ── HERO SECTION: NO FAMILY LEFT BEHIND. NO CATTLE ABANDONED ── */}
-        <section className="relative rounded-3xl p-6 sm:p-10 lg:p-14 bg-gradient-to-br from-[#0B1728] via-[#0F1E2E] to-[#08101C] border border-slate-700/80 shadow-[0_20px_70px_rgba(0,0,0,0.7)] overflow-hidden">
+        <section id="hero" className="relative rounded-3xl p-6 sm:p-10 lg:p-14 bg-gradient-to-br from-[#0B1728] via-[#0F1E2E] to-[#08101C] border border-slate-700/80 shadow-[0_20px_70px_rgba(0,0,0,0.7)] overflow-hidden">
           {/* Subtle watermark background emblem */}
           <div className="absolute -right-16 -bottom-16 w-96 h-96 rounded-full border-[20px] border-white/[0.02] pointer-events-none select-none flex items-center justify-center">
             <span className="text-8xl font-black text-white/[0.02] font-mono">DRR</span>
@@ -366,7 +387,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── LIVE IMPACT METRICS STRIP (THE 5 PROPERLY ALIGNED BOXES) ── */}
-        <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+        <section id="metrics" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
           {[
             { label: 'CITIZENS TRACKED', value: '428 / 428', note: '100% Evacuation Quota', icon: Users, color: '#2DD4BF' },
             { label: 'LIVESTOCK SECURED', value: '194 / 194', note: 'Zero Cattle Abandoned', icon: HeartHandshake, color: '#E05A1B' },
@@ -400,7 +421,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── THE REAL-WORLD PROBLEM: WHY TRADITIONAL EVACUATIONS FAIL ── */}
-        <section className="rounded-3xl p-6 sm:p-8 lg:p-10 bg-[#0D1929]/80 border border-slate-700/80 shadow-xl">
+        <section id="challenges" className="rounded-3xl p-6 sm:p-8 lg:p-10 bg-[#0D1929]/80 border border-slate-700/80 shadow-xl">
           <div className="max-w-3xl mb-8">
             <div className="text-xs font-mono font-bold text-[#E05A1B] tracking-widest uppercase mb-1">
               THE REAL-WORLD PROBLEM
@@ -468,7 +489,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── LIVE TACTICAL THEATER & HOVER VIDEO BOX (SIDE-BY-SIDE EXECUTION) ── */}
-        <section className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/90 border border-slate-700/80 shadow-2xl">
+        <section id="recon-video" className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/90 border border-slate-700/80 shadow-2xl">
           <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#070D18] border border-slate-700 text-xs font-mono text-[#2DD4BF] mb-2 font-bold">
               <Activity size={12} />
@@ -640,7 +661,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── THE 4 PILLARS OF RURAL RESILIENCE (THE 4 PROPERLY ALIGNED BOXES) ── */}
-        <section className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/90 border border-slate-700/80 shadow-2xl relative overflow-hidden">
+        <section id="pillars" className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/90 border border-slate-700/80 shadow-2xl relative overflow-hidden">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-slate-700/80 mb-8">
             <div>
               <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#E05A1B] tracking-widest uppercase">
@@ -728,7 +749,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── INTERACTIVE VIEWPORT SWITCHER (EXPLORE 4 VIEWPORTS) ── */}
-        <section className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/95 border border-slate-700/80 shadow-2xl flex flex-col gap-6">
+        <section id="viewports" className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/95 border border-slate-700/80 shadow-2xl flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
               <div className="text-xs font-mono font-bold text-[#E05A1B] tracking-widest uppercase">
@@ -1142,7 +1163,7 @@ export const LandingPage: React.FC = () => {
         </section>
 
         {/* ── 24X7 EMERGENCY ASSISTANCE DIRECTORY & HELPLINES ── */}
-        <section className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/80 border border-slate-700/80 shadow-xl">
+        <section id="helplines" className="rounded-3xl p-6 sm:p-10 bg-[#0D1929]/80 border border-slate-700/80 shadow-xl">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-950/40 border border-red-800/60 text-xs font-mono text-red-400 mb-2 font-bold">

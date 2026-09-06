@@ -124,6 +124,7 @@ export const MissionMap: React.FC = () => {
   const markersRef = useRef<maplibregl.Marker[]>([]);
   const vehicleMarkersRef = useRef<Record<string, maplibregl.Marker>>({});
   const prevCoordsRef = useRef<Record<string, [number, number]>>({});
+  const currentBasemapRef = useRef<MapBasemap>(mapBasemap);
 
   // Active MapLibre Style source
   const getStyleForBasemap = (basemap: MapBasemap): string | maplibregl.StyleSpecification => {
@@ -695,10 +696,12 @@ export const MissionMap: React.FC = () => {
     };
   }, []);
 
-  // Handle Basemap Switch
+  // Handle Basemap Switch safely
   useEffect(() => {
     const map = mapRef.current;
-    if (!map) return;
+    if (!map || !mapLoaded) return;
+    if (currentBasemapRef.current === mapBasemap) return;
+    currentBasemapRef.current = mapBasemap;
 
     const newStyle = getStyleForBasemap(mapBasemap);
     map.setStyle(newStyle);
@@ -708,7 +711,7 @@ export const MissionMap: React.FC = () => {
       syncMarkers();
       syncVehicles();
     });
-  }, [mapBasemap]);
+  }, [mapBasemap, mapLoaded, syncMapLayers, syncMarkers, syncVehicles]);
 
   // Re-sync layers & markers when store changes
   useEffect(() => {
