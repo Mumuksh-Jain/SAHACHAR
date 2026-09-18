@@ -58,9 +58,22 @@ export const BootSequence: React.FC = () => {
     };
   }, []);
 
+  // Auto-transition to Landing Page after 10 seconds of booting video as requested
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBooting(false);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, [setIsBooting]);
+
   const handleTimeUpdate = () => {
-    if (videoRef.current && videoRef.current.duration) {
-      const pct = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      if (current >= 10) {
+        setIsBooting(false);
+        return;
+      }
+      const pct = Math.min(100, (current / 10) * 100);
       setProgress(pct);
     }
   };

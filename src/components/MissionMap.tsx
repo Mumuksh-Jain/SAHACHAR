@@ -113,7 +113,7 @@ export const MissionMap: React.FC = () => {
     floodVisible, floodLevel, showLayers, demoStage, activePlanVersion,
     vehicleCoords, selectedSettlementId, selectedVehicleId,
     setSelectedSettlement, setSelectedVehicle, setActivePanel,
-    toggleLayer, mapBasemap, setMapBasemap, language
+    toggleLayer, mapBasemap, setMapBasemap, language, mapCameraTarget
   } = useDemoStore();
 
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -744,6 +744,21 @@ export const MissionMap: React.FC = () => {
       map.flyTo({ center: s.coordinates, zoom: 13.2, duration: 1000 });
     }
   }, [selectedSettlementId, mapLoaded, settlements]);
+
+  // Scripted camera choreography for automated demo
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !mapLoaded || !mapCameraTarget) return;
+
+    map.flyTo({
+      center: mapCameraTarget.center,
+      zoom: mapCameraTarget.zoom ?? 12.5,
+      pitch: mapCameraTarget.pitch ?? 0,
+      bearing: mapCameraTarget.bearing ?? 0,
+      duration: mapCameraTarget.duration ?? 2000,
+      essential: true,
+    });
+  }, [mapCameraTarget, mapLoaded]);
 
   return (
     <div className="relative w-full h-full overflow-hidden bg-[#0A0D14] select-none">

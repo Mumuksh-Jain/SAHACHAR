@@ -5,7 +5,7 @@ import {
   ChevronRight, FastForward, X, Terminal, Compass
 } from 'lucide-react';
 import { useDemoStore } from '../store/useDemoStore';
-import { startAutoDemo, stopAutoDemo } from '../engine/demoEvents';
+import { startAutoDemo, stopAutoDemo, pauseAutoDemo, resumeAutoDemo, jumpToSecond, SCRIPT_STAGES } from '../engine/demoEvents';
 import { startVehicleAnimation, stopAllAnimations } from '../engine/telemetryEngine';
 
 export const DemoControl: React.FC = () => {
@@ -209,24 +209,71 @@ export const DemoControl: React.FC = () => {
             <motion.button
               whileTap={{ scale: 0.98 }}
               onClick={handleAutoDemo}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl mb-3 font-mono font-bold text-xs uppercase tracking-wider transition-all"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl mb-3 font-mono font-bold text-xs uppercase tracking-wider transition-all shadow-lg cursor-pointer"
               style={{
                 background: autoDemoRunning && !autoDemoPaused
                   ? 'linear-gradient(135deg, #D97706, #B45309)'
                   : 'linear-gradient(135deg, #E05A1B, #EA580C)',
                 color: '#FAF8F5',
-                border: '1px solid rgba(255,255,255,0.2)',
-                boxShadow: '0 4px 14px rgba(224,90,27,0.4)',
+                border: '1px solid rgba(255,255,255,0.3)',
+                boxShadow: '0 4px 20px rgba(224,90,27,0.5)',
               }}
             >
               {autoDemoRunning && !autoDemoPaused ? (
-                <><Pause size={14} /> PAUSE AUTONOMOUS WORKFLOW</>
+                <><Pause size={15} /> PAUSE SCRIPTED DEMO</>
               ) : autoDemoRunning && autoDemoPaused ? (
-                <><Play size={14} /> RESUME AUTONOMOUS WORKFLOW</>
+                <><Play size={15} fill="currentColor" /> RESUME SCRIPTED DEMO</>
               ) : (
-                <><FastForward size={14} /> ▶ PLAY FULL END-TO-END DEMO</>
+                <><Play size={15} fill="currentColor" /> ▶ START 3:38 SCRIPTED DEMO</>
               )}
             </motion.button>
+
+            {/* Quick Rehearsal Stage Jump */}
+            <div className="mb-3 p-2.5 rounded-xl bg-[#070D18] border border-slate-700/80">
+              <div className="text-[10px] font-mono font-bold text-[#2DD4BF] uppercase mb-1.5 flex items-center justify-between">
+                <span>STAGE REHEARSAL JUMPER</span>
+                <span className="text-slate-400">8 STAGES</span>
+              </div>
+              <select
+                onChange={(e) => {
+                  const sec = Number(e.target.value);
+                  if (!isNaN(sec)) jumpToSecond(sec);
+                }}
+                className="w-full text-xs px-2.5 py-1.5 rounded-lg bg-[#0F172A] border border-slate-600 text-white font-mono cursor-pointer"
+              >
+                <option value="">Jump to specific script beat...</option>
+                {SCRIPT_STAGES.map((st, i) => (
+                  <option key={st.id} value={st.startSecond}>
+                    {i}. {st.stageName}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Recording Controls: 16:9 & Subtitles */}
+            <div className="grid grid-cols-2 gap-2 mb-3 font-mono text-[10px]">
+              <button
+                onClick={() => store.setDemoRecordingMode(!store.demoRecordingMode)}
+                className={`py-2 px-2 rounded-xl border text-center font-bold transition-all cursor-pointer ${
+                  store.demoRecordingMode
+                    ? 'bg-[#E05A1B]/20 border-[#E05A1B] text-[#F97316]'
+                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                }`}
+              >
+                16:9 REC: {store.demoRecordingMode ? 'ACTIVE' : 'OFF'}
+              </button>
+
+              <button
+                onClick={() => store.setShowDemoSubtitles(!store.showDemoSubtitles)}
+                className={`py-2 px-2 rounded-xl border text-center font-bold transition-all cursor-pointer ${
+                  store.showDemoSubtitles
+                    ? 'bg-[#2DD4BF]/20 border-[#2DD4BF] text-[#2DD4BF]'
+                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-white'
+                }`}
+              >
+                SUBTITLES: {store.showDemoSubtitles ? 'VISIBLE' : 'HIDDEN'}
+              </button>
+            </div>
 
             {/* Manual Event Triggers */}
             <div className="text-[10px] font-mono font-bold text-[#E2D9CE]/50 tracking-wider uppercase mb-2">

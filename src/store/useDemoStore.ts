@@ -81,7 +81,7 @@ export interface DemoStore {
   scenarioTime: string;
   setScenarioTime: (t: string) => void;
 
-  // ── Auto Demo ─────────────────────────
+  // ── Auto Demo & Scripted Choreographer ─────────
   autoDemoRunning: boolean;
   autoDemoPaused: boolean;
   autoDemoSpeed: 1 | 2 | 4;
@@ -90,6 +90,24 @@ export interface DemoStore {
   resumeAutoDemo: () => void;
   stopAutoDemo: () => void;
   setAutoDemoSpeed: (s: 1 | 2 | 4) => void;
+
+  // ── Scripted Teleprompter & Choreographer State ──
+  demoRecordingMode: boolean;
+  setDemoRecordingMode: (v: boolean) => void;
+  demoElapsedSeconds: number;
+  setDemoElapsedSeconds: (s: number) => void;
+  demoSubtitlesHindi: string;
+  demoSubtitlesEnglish: string;
+  demoSubtitlesStage: string;
+  setDemoSubtitles: (sub: { stage: string; hindi: string; english: string }) => void;
+  showDemoSubtitles: boolean;
+  setShowDemoSubtitles: (v: boolean) => void;
+  activeSolverModal: boolean;
+  setActiveSolverModal: (v: boolean) => void;
+  virtualCursor: { x: number; y: number; visible: boolean; clicking: boolean; label?: string };
+  setVirtualCursor: (c: Partial<{ x: number; y: number; visible: boolean; clicking: boolean; label?: string }>) => void;
+  mapCameraTarget: { center: [number, number]; zoom?: number; pitch?: number; bearing?: number; duration?: number } | null;
+  setMapCameraTarget: (t: { center: [number, number]; zoom?: number; pitch?: number; bearing?: number; duration?: number } | null) => void;
 
   // ── Map & Geographical State ──────────
   mapBasemap: MapBasemap;
@@ -218,7 +236,7 @@ export const useDemoStore = create<DemoStore>((set, get) => ({
   scenarioTime: '11:30',
   setScenarioTime: (t) => set({ scenarioTime: t }),
 
-  // ── Auto Demo ─────────────────────────
+  // ── Auto Demo & Scripted Choreographer ─────────
   autoDemoRunning: false,
   autoDemoPaused: false,
   autoDemoSpeed: 1,
@@ -227,6 +245,30 @@ export const useDemoStore = create<DemoStore>((set, get) => ({
   resumeAutoDemo: () => set({ autoDemoPaused: false }),
   stopAutoDemo: () => set({ autoDemoRunning: false, autoDemoPaused: false }),
   setAutoDemoSpeed: (s) => set({ autoDemoSpeed: s }),
+
+  // ── Scripted Teleprompter & Choreographer State ──
+  demoRecordingMode: true, // Default to clean 16:9 recording framing
+  setDemoRecordingMode: (v) => set({ demoRecordingMode: v }),
+  demoElapsedSeconds: 0,
+  setDemoElapsedSeconds: (s) => set({ demoElapsedSeconds: s }),
+  demoSubtitlesHindi: 'आपदा के समय warning मिल जाना और वास्तव में evacuate कर पाना — ये दोनों एक जैसी बातें नहीं हैं।',
+  demoSubtitlesEnglish: 'SAHACHAR-DRR • Rural Evacuation Assurance & Ground Action System',
+  demoSubtitlesStage: 'STAGE 1: THE HUMANITARIAN PROBLEM (0:00 – 0:25)',
+  setDemoSubtitles: ({ stage, hindi, english }) => set({
+    demoSubtitlesStage: stage,
+    demoSubtitlesHindi: hindi,
+    demoSubtitlesEnglish: english
+  }),
+  showDemoSubtitles: true,
+  setShowDemoSubtitles: (v) => set({ showDemoSubtitles: v }),
+  activeSolverModal: false,
+  setActiveSolverModal: (v) => set({ activeSolverModal: v }),
+  virtualCursor: { x: -100, y: -100, visible: false, clicking: false },
+  setVirtualCursor: (c) => set((state) => ({
+    virtualCursor: { ...state.virtualCursor, ...c }
+  })),
+  mapCameraTarget: null,
+  setMapCameraTarget: (t) => set({ mapCameraTarget: t }),
 
   // ── Map & Geographical State ──────────
   mapBasemap: 'satellite', // High-resolution satellite basemap default!

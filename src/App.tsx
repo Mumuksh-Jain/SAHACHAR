@@ -5,12 +5,19 @@ import { MissionControl } from './pages/MissionControl';
 import { DriverView, CitizenView, FieldView } from './pages/MobileViews';
 import { LandingPage } from './pages/LandingPage';
 import { BootSequence } from './components/BootSequence';
+import { VirtualCursor } from './components/VirtualCursor';
+import { DemoSubtitlesHUD } from './components/DemoSubtitlesHUD';
+import { CPSATSolverModal } from './components/CPSATSolverModal';
 
 function App() {
-  const { appView, isBooting } = useDemoStore();
+  const { appView, isBooting, demoRecordingMode } = useDemoStore();
 
   return (
-    <>
+    <div className={`w-full min-h-screen ${demoRecordingMode ? 'overflow-x-hidden selection:bg-[#E05A1B]' : ''}`}>
+      {/* Scripted Autonomous Demo Overlays */}
+      <VirtualCursor />
+      <DemoSubtitlesHUD />
+      <CPSATSolverModal />
       <AnimatePresence>
         {isBooting && (
           <motion.div
@@ -82,7 +89,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
