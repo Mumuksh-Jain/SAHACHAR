@@ -346,27 +346,22 @@ SAHACHAR was designed specifically for severe infrastructure breakdown:
 This repository houses the **System Architecture, Structural Specifications, and Conceptual Blueprint** for **SAHACHAR-DRR**.
 
 ### Current Repository Status
+- ✅ **Cinematic Booting Sequence & Landing Portal**: Active & interactive
 - ✅ **System Architecture & Dataflow Diagrams**: Fully specified
 - ✅ **Mathematical Formulations & Objective Hierarchy**: Defined (CP-SAT & Access Horizon)
-- ✅ **Structural Folder Layout**: Established
-- 🔒 **Production Engine & Execution Code**: Maintained privately and not published on GitHub.
+- 🔒 **Tactical Command Surfaces (SEOC Radar, Driver Telemetry, Citizen SOS)**: Feature Coming Soon (active deployment)
 
-```text
-SAHACHAR/
-├── public/                            # System preview assets and official brandmarks
-│   ├── sahachar-banner-clean.jpg
-│   ├── sahachar-logo.png
-│   └── favicon.svg
-│
-├── src/                               # Architectural skeleton layout
-│   ├── components/                    # Modular tactical UI specifications
-│   ├── engine/                        # Optimization and routing algorithmic specifications
-│   ├── data/                          # Hydrological and settlement data schemas
-│   ├── pages/                         # Command surface layout specifications
-│   └── store/                         # State synchronization model specifications
-│
-└── README.md                          # Master architectural documentation
+### 🚀 Running the Live Portal Preview
+To preview the interactive Booting Sequence and Landing Portal locally:
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run local development preview
+npm run dev
 ```
+👉 The portal will launch at `http://localhost:5173`.
 
 ---
 
