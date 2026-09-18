@@ -1,4 +1,4 @@
-# 🛡️ SAHACHAR (सहचर / ସହଚର)
+# 🛡️ SAHACHAR (सहचार / ସହଚାର)
 
 ![React](https://img.shields.io/badge/React_19-Vite_6-61DAFB?style=flat&logo=react) ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript) ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38B2AC?style=flat&logo=tailwind-css) ![MapLibre GL](https://img.shields.io/badge/GIS-MapLibre_GL-0078D7?style=flat&logo=maplibre) ![Google OR-Tools](https://img.shields.io/badge/Optimization-OR--Tools_CP--SAT-4285F4?style=flat&logo=google) ![State](https://img.shields.io/badge/State-Zustand-443E37?style=flat) ![Deployment](https://img.shields.io/badge/Deployment-Odisha_OSDMA_DRR-E05A1B?style=flat) ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 
