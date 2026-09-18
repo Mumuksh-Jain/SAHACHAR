@@ -457,7 +457,7 @@ Contributions are welcome! Please follow standard open-source workflows:
 
 ## 📜 License & Author
 
-Developed by **[Mumuksh Jain](https://github.com/Mumuksh-Jain)** (`mumukshujain2466@gmail.com`) for the **Smart India Hackathon (SIH)** Disaster Risk Reduction track and coastal flood mitigation initiatives.
+Developed by **[Mumuksh Jain](https://github.com/Mumuksh-Jain)** (`mumukshujain2466@gmail.com`) for Disaster Risk Reduction (DRR) and coastal flood mitigation initiatives.
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
 

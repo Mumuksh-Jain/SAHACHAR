@@ -720,7 +720,7 @@ export const MissionControl: React.FC = () => {
           className="flex flex-col overflow-hidden flex-shrink-0 backdrop-blur-xl"
           style={{ width: '22%', background: 'rgba(15, 23, 42, 0.96)', borderLeft: '1px solid rgba(56, 189, 248, 0.2)' }}
         >
-          {/* SIH Banner Theme Tab switcher */}
+          {/* Tactical Theme Tab switcher */}
           <div className="p-2 border-b border-white/5">
             <div className="flex p-1 rounded-xl bg-[#0B132B] border border-slate-700/60">
               {(['fleet', 'missions'] as RightTab[]).map(tab => (
